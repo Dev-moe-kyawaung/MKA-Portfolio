@@ -1,0 +1,4530 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Moe Kyaw Aung - Senior Android Developer with 12+ years experience in Kotlin, Jetpack Compose, Firebase, and modern Android development">
+    <meta name="keywords" content="Android Developer, Kotlin, Jetpack Compose, Firebase, Mobile Development, Myanmar Developer">
+    <meta name="author" content="Moe Kyaw Aung">
+    <meta property="og:title" content="Moe Kyaw Aung - Senior Android Developer">
+    <meta property="og:description" content="Android Developer specializing in Kotlin, Jetpack Compose, and scalable mobile solutions">
+    <meta property="og:image" content="https://res.cloudinary.com/dye5qpwii/image/upload/v1778527878/IMG_20260430_053105_uef0yr.png">
+    <meta property="og:url" content="https://dev-moe-kyawaung.github.io/">
+    <meta name="twitter:card" content="summary_large_image">
+    
+    <title>⭐ MOE KYAW AUNG ⭐ ANDROID SENIOR DEVELOPER</title>
+    
+    <!-- Google Fonts - Cyberpunk aesthetic -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Rajdhani:wght@300;400;500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <style>
+        /* ============================================================
+           CSS CUSTOM PROPERTIES - Cyberpunk Neon Theme
+           ============================================================ */
+        :root {
+            /* Neon Colors */
+            --neon-cyan: #00f3ff;
+            --neon-pink: #ff006e;
+            --neon-purple: #8b00ff;
+            --neon-yellow: #ffea00;
+            --neon-green: #39ff14;
+            --neon-orange: #ff6600;
+            
+            /* Dark Background */
+            --bg-dark: #0a0a0f;
+            --bg-darker: #050508;
+            --bg-card: #12121a;
+            --bg-card-hover: #1a1a28;
+            
+            /* Text Colors */
+            --text-primary: #ffffff;
+            --text-secondary: #a0a0b8;
+            --text-accent: var(--neon-cyan);
+            
+            /* Spacing */
+            --section-padding: 6rem 2rem;
+            --section-padding-mobile: 4rem 1.5rem;
+            
+            /* Animations */
+            --transition-fast: 0.2s ease;
+            --transition-normal: 0.4s ease;
+            --transition-slow: 0.6s ease;
+        }
+
+        /* ============================================================
+           BASE STYLES
+           ============================================================ */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+
+        body {
+            font-family: 'Rajdhani', sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--bg-darker);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(180deg, var(--neon-cyan), var(--neon-purple));
+            border-radius: 5px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(180deg, var(--neon-pink), var(--neon-orange));
+        }
+
+        /* ============================================================
+           CUSTOM CURSOR EFFECT
+           ============================================================ */
+        .custom-cursor {
+            width: 20px;
+            height: 20px;
+            border: 2px solid var(--neon-cyan);
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            z-index: 9999;
+            mix-blend-mode: difference;
+            transition: all 0.1s ease;
+            transform: translate(-50%, -50%);
+        }
+
+        .custom-cursor-dot {
+            width: 6px;
+            height: 6px;
+            background: var(--neon-pink);
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            z-index: 10000;
+            transform: translate(-50%, -50%);
+            box-shadow: 0 0 10px var(--neon-pink);
+        }
+
+        /* ============================================================
+           PRELOADER
+           ============================================================ */
+        .preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--bg-darker);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 10001;
+            transition: opacity 0.5s ease, visibility 0.5s ease;
+        }
+
+        .preloader.hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .loader {
+            width: 80px;
+            height: 80px;
+            border: 4px solid var(--bg-card);
+            border-top: 4px solid var(--neon-cyan);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* ============================================================
+           NAVIGATION BAR
+           ============================================================ */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(10, 10, 15, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(0, 243, 255, 0.2);
+            z-index: 1000;
+            transition: all var(--transition-normal);
+        }
+
+        .navbar.scrolled {
+            box-shadow: 0 4px 20px rgba(0, 243, 255, 0.1);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 800;
+            background: linear-gradient(90deg, var(--neon-cyan), var(--neon-pink));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-decoration: none;
+            position: relative;
+        }
+
+        .nav-logo::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--neon-cyan);
+            transition: width var(--transition-normal);
+        }
+
+        .nav-logo:hover::after {
+            width: 100%;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-link {
+            color: var(--text-primary);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1rem;
+            position: relative;
+            transition: color var(--transition-fast);
+            font-family: 'Rajdhani', sans-serif;
+            letter-spacing: 0.5px;
+        }
+
+        .nav-link::before {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: var(--neon-cyan);
+            transform: translateX(-50%);
+            transition: width var(--transition-normal);
+        }
+
+        .nav-link:hover {
+            color: var(--neon-cyan);
+        }
+
+        .nav-link:hover::before {
+            width: 100%;
+        }
+
+        /* Theme Toggle Button */
+        .theme-toggle {
+            background: var(--bg-card);
+            border: 1px solid var(--neon-cyan);
+            color: var(--neon-cyan);
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all var(--transition-fast);
+            font-size: 1rem;
+        }
+
+        .theme-toggle:hover {
+            background: var(--neon-cyan);
+            color: var(--bg-dark);
+            box-shadow: 0 0 20px var(--neon-cyan);
+        }
+
+        /* Mobile Menu Toggle */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 5px;
+        }
+
+        .menu-toggle span {
+            width: 25px;
+            height: 3px;
+            background: var(--neon-cyan);
+            transition: all var(--transition-normal);
+            border-radius: 2px;
+        }
+
+        .menu-toggle.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .menu-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .menu-toggle.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -6px);
+        }
+
+        /* ============================================================
+           HERO SECTION - Animated Particle Background
+           ============================================================ */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            padding-top: 80px;
+        }
+
+        #particles-canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            max-width: 1200px;
+            padding: 2rem;
+        }
+
+        .hero-tag {
+            display: inline-block;
+            background: rgba(0, 243, 255, 0.1);
+            border: 1px solid var(--neon-cyan);
+            color: var(--neon-cyan);
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            animation: float 3s ease-in-out infinite;
+            font-family: 'Share Tech Mono', monospace;
+            letter-spacing: 1px;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .hero-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 4.5rem;
+            font-weight: 900;
+            margin-bottom: 1rem;
+            background: linear-gradient(90deg, var(--neon-cyan), var(--neon-pink), var(--neon-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: gradientShift 5s ease infinite;
+            background-size: 200% auto;
+            line-height: 1.2;
+        }
+
+        @keyframes gradientShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        .hero-subtitle {
+            font-size: 2rem;
+            font-weight: 600;
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+            font-family: 'Rajdhani', sans-serif;
+        }
+
+        .hero-location {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            font-family: 'Rajdhani', sans-serif;
+        }
+
+        .hero-desc {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            max-width: 800px;
+            margin: 0 auto 2rem;
+            line-height: 1.8;
+        }
+
+        /* Animated Stats Counter */
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin: 3rem 0;
+            flex-wrap: wrap;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--neon-cyan);
+            display: block;
+            text-shadow: 0 0 20px var(--neon-cyan);
+        }
+
+        .stat-label {
+            font-size: 1rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-top: 0.5rem;
+        }
+
+        /* Hero Buttons */
+        .hero-btns {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 3rem;
+        }
+
+        .btn-primary, .btn-secondary {
+            padding: 1rem 2.5rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border-radius: 50px;
+            text-decoration: none;
+            transition: all var(--transition-normal);
+            font-family: 'Rajdhani', sans-serif;
+            letter-spacing: 1px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary {
+            background: linear-gradient(90deg, var(--neon-cyan), var(--neon-purple));
+            color: white;
+            border: none;
+        }
+
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.5s;
+        }
+
+        .btn-primary:hover::before {
+            left: 100%;
+        }
+
+        .btn-primary:hover {
+            box-shadow: 0 0 30px var(--neon-cyan);
+            transform: translateY(-3px);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--neon-pink);
+            border: 2px solid var(--neon-pink);
+        }
+
+        .btn-secondary:hover {
+            background: var(--neon-pink);
+            color: white;
+            box-shadow: 0 0 30px var(--neon-pink);
+            transform: translateY(-3px);
+        }
+
+        /* Social Icons in Hero */
+        .hero-socials {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            margin-top: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .social-icon {
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--bg-card);
+            border: 2px solid var(--neon-cyan);
+            border-radius: 50%;
+            color: var(--neon-cyan);
+            font-size: 1.5rem;
+            transition: all var(--transition-normal);
+            text-decoration: none;
+        }
+
+        .social-icon:hover {
+            background: var(--neon-cyan);
+            color: var(--bg-dark);
+            transform: translateY(-5px) rotate(360deg);
+            box-shadow: 0 0 25px var(--neon-cyan);
+        }
+
+        /* ============================================================
+           SECTION SEPARATOR
+           ============================================================ */
+        .section-sep {
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--neon-cyan), transparent);
+            margin: 4rem auto;
+            max-width: 80%;
+        }
+
+        /* ============================================================
+           COMMON SECTION STYLES
+           ============================================================ */
+        .section {
+            padding: var(--section-padding);
+            max-width: 1400px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .section-label {
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 0.9rem;
+            color: var(--neon-cyan);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .section-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 3rem;
+            font-weight: 800;
+            text-align: center;
+            margin-bottom: 3rem;
+            background: linear-gradient(90deg, var(--neon-cyan), var(--neon-pink));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .section-desc {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 3rem;
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        /* ============================================================
+           ABOUT SECTION - Timeline & Progress Rings
+           ============================================================ */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-image-wrapper {
+            position: relative;
+        }
+
+        .about-image {
+            width: 100%;
+            border-radius: 20px;
+            border: 3px solid var(--neon-cyan);
+            box-shadow: 0 0 40px rgba(0, 243, 255, 0.3);
+            transition: all var(--transition-normal);
+        }
+
+        .about-image:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 60px rgba(0, 243, 255, 0.5);
+        }
+
+        .about-content h3 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2rem;
+            color: var(--neon-cyan);
+            margin-bottom: 1.5rem;
+        }
+
+        .about-content p {
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Info List */
+        .info-list {
+            background: var(--bg-card);
+            border: 1px solid rgba(0, 243, 255, 0.2);
+            border-radius: 15px;
+            padding: 2rem;
+            margin-top: 2rem;
+        }
+
+        .info-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 1rem 0;
+            border-bottom: 1px solid rgba(0, 243, 255, 0.1);
+        }
+
+        .info-item:last-child {
+            border-bottom: none;
+        }
+
+        .info-key {
+            font-weight: 600;
+            color: var(--text-secondary);
+        }
+
+        .info-value {
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+
+        .info-value.accent {
+            color: var(--neon-cyan);
+        }
+
+        /* Progress Rings (SVG Animated) */
+        .progress-rings {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .progress-ring {
+            text-align: center;
+        }
+
+        .progress-ring svg {
+            width: 150px;
+            height: 150px;
+            transform: rotate(-90deg);
+        }
+
+        .progress-ring circle {
+            fill: none;
+            stroke-width: 8;
+        }
+
+        .progress-ring .bg-circle {
+            stroke: var(--bg-card);
+        }
+
+        .progress-ring .progress-circle {
+            stroke: var(--neon-cyan);
+            stroke-dasharray: 440;
+            stroke-dashoffset: 440;
+            transition: stroke-dashoffset 2s ease;
+        }
+
+        .progress-ring.animated .progress-circle {
+            stroke-dashoffset: calc(440 - (440 * var(--progress)) / 100);
+        }
+
+        .progress-label {
+            margin-top: 1rem;
+            font-weight: 600;
+            color: var(--text-secondary);
+        }
+
+        .progress-percent {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.5rem;
+            color: var(--neon-cyan);
+            font-weight: 700;
+        }
+
+        /* Timeline */
+        .timeline {
+            position: relative;
+            padding: 2rem 0;
+            margin-top: 3rem;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(180deg, var(--neon-cyan), var(--neon-pink));
+            transform: translateX(-50%);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 3rem;
+            width: 45%;
+        }
+
+        .timeline-item:nth-child(odd) {
+            margin-left: 0;
+            text-align: right;
+        }
+
+        .timeline-item:nth-child(even) {
+            margin-left: auto;
+            text-align: left;
+        }
+
+        .timeline-content {
+            background: var(--bg-card);
+            border: 1px solid rgba(0, 243, 255, 0.2);
+            border-radius: 15px;
+            padding: 1.5rem;
+            position: relative;
+            transition: all var(--transition-normal);
+        }
+
+        .timeline-content:hover {
+            border-color: var(--neon-cyan);
+            box-shadow: 0 0 30px rgba(0, 243, 255, 0.2);
+            transform: translateY(-5px);
+        }
+
+        .timeline-year {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.2rem;
+            color: var(--neon-cyan);
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-desc {
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            top: 20px;
+            width: 20px;
+            height: 20px;
+            background: var(--neon-cyan);
+            border-radius: 50%;
+            border: 3px solid var(--bg-dark);
+            box-shadow: 0 0 20px var(--neon-cyan);
+        }
+
+        .timeline-item:nth-child(odd) .timeline-dot {
+            right: -55%;
+        }
+
+        .timeline-item:nth-child(even) .timeline-dot {
+            left: -55%;
+        }
+
+        /* ============================================================
+           SKILLS SECTION - Tech Chips Cloud
+           ============================================================ */
+        .skills-cloud {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .skill-chip {
+            background: var(--bg-card);
+            border: 2px solid var(--neon-cyan);
+            color: var(--text-primary);
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all var(--transition-normal);
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .skill-chip:hover {
+            background: var(--neon-cyan);
+            color: var(--bg-dark);
+            transform: translateY(-5px) scale(1.1);
+            box-shadow: 0 0 25px var(--neon-cyan);
+        }
+
+        /* ============================================================
+           APPS COLLECTION SECTION - Grid Gallery
+           ============================================================ */
+        .apps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .app-card {
+            background: var(--bg-card);
+            border: 1px solid rgba(0, 243, 255, 0.2);
+            border-radius: 20px;
+            padding: 2rem;
+            transition: all var(--transition-normal);
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .app-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 243, 255, 0.1), transparent);
+            transition: left 0.5s;
+        }
+
+        .app-card:hover::before {
+            left: 100%;
+        }
+
+        .app-card:hover {
+            border-color: var(--neon-cyan);
+            transform: translateY(-10px);
+            box-shadow: 0 10px 40px rgba(0, 243, 255, 0.3);
+        }
+
+        .app-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .app-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--neon-cyan);
+            margin-bottom: 0.5rem;
+        }
+
+        .app-desc {
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .app-link {
+            display: inline-block;
+            color: var(--neon-pink);
+            text-decoration: none;
+            font-weight: 600;
+            transition: all var(--transition-fast);
+        }
+
+        .app-link:hover {
+            color: var(--neon-cyan);
+            text-decoration: underline;
+        }
+
+        /* ============================================================
+           CERTIFICATES SECTION
+           ============================================================ */
+        .cert-stats {
+            display: flex;
+            justify-content: center;
+            gap: 4rem;
+            margin-bottom: 4rem;
+            flex-wrap: wrap;
+        }
+
+        .cert-stat-box {
+            text-align: center;
+            background: var(--bg-card);
+            border: 2px solid var(--neon-cyan);
+            border-radius: 20px;
+            padding: 2rem 3rem;
+            transition: all var(--transition-normal);
+        }
+
+        .cert-stat-box:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 40px rgba(0, 243, 255, 0.3);
+        }
+
+        .cert-stat-number {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 3.5rem;
+            font-weight: 900;
+            color: var(--neon-cyan);
+            text-shadow: 0 0 20px var(--neon-cyan);
+        }
+
+        .cert-stat-label {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-top: 0.5rem;
+        }
+
+        .cert-categories {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .cert-category {
+            background: var(--bg-card);
+            border: 1px solid rgba(0, 243, 255, 0.2);
+            border-radius: 15px;
+            padding: 2rem;
+            transition: all var(--transition-normal);
+            cursor: pointer;
+        }
+
+        .cert-category:hover {
+            border-color: var(--neon-pink);
+            transform: translateY(-10px);
+            box-shadow: 0 10px 40px rgba(255, 0, 110, 0.2);
+        }
+
+        .cert-category-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .cert-category-name {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--neon-cyan);
+            margin-bottom: 0.5rem;
+        }
+
+        .cert-category-count {
+            color: var(--text-secondary);
+            font-size: 1rem;
+        }
+
+        /* ============================================================
+           GITHUB ACCOUNTS COLLECTION
+           ============================================================ */
+        .github-grid
+        .github-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 3rem;
+        }
+
+        .github-card {
+            background: var(--bg-card);
+            border: 1px solid rgba(0, 243, 255, 0.2);
+            border-radius: 15px;
+            padding: 1.5rem;
+            transition: all var(--transition-normal);
+            text-decoration: none;
+            display: block;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .github-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--neon-cyan), var(--neon-pink));
+            transform: scaleX(0);
+            transition: transform var(--transition-normal);
+        }
+
+        .github-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .github-card:hover {
+            border-color: var(--neon-cyan);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 243, 255, 0.2);
+        }
+
+        .github-card-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .github-icon {
+            font-size: 2rem;
+            color: var(--neon-cyan);
+        }
+
+        .github-name {
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 1.1rem;
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+
+        .github-url {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            word-break: break-all;
+            transition: color var(--transition-fast);
+        }
+
+        .github-card:hover .github-url {
+            color: var(--neon-cyan);
+        }
+
+        /* ============================================================
+           LOVABLE PWA LINKS COLLECTION
+           ============================================================ */
+        .lovable-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .lovable-card {
+            background: var(--bg-card);
+            border: 2px solid rgba(255, 0, 110, 0.3);
+            border-radius: 20px;
+            padding: 2rem;
+            transition: all var(--transition-normal);
+            text-decoration: none;
+            display: block;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .lovable-card::after {
+            content: '♥';
+            position: absolute;
+            top: -20px;
+            right: -20px;
+            font-size: 6rem;
+            color: rgba(255, 0, 110, 0.1);
+            transition: all var(--transition-normal);
+        }
+
+        .lovable-card:hover::after {
+            color: rgba(255, 0, 110, 0.3);
+            transform: rotate(15deg) scale(1.2);
+        }
+
+        .lovable-card:hover {
+            border-color: var(--neon-pink);
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 15px 50px rgba(255, 0, 110, 0.3);
+        }
+
+        .lovable-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--neon-pink);
+            margin-bottom: 0.5rem;
+        }
+
+        .lovable-url {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            word-break: break-all;
+            font-family: 'Share Tech Mono', monospace;
+        }
+
+        .lovable-badge {
+            display: inline-block;
+            background: rgba(255, 0, 110, 0.2);
+            color: var(--neon-pink);
+            padding: 0.3rem 0.8rem;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            margin-top: 1rem;
+            font-weight: 600;
+        }
+
+        /* ============================================================
+           EMAIL COLLECTION SECTION
+           ============================================================ */
+        .email-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 3rem;
+        }
+
+        .email-card {
+            background: var(--bg-card);
+            border: 1px solid rgba(139, 0, 255, 0.3);
+            border-radius: 15px;
+            padding: 1.5rem;
+            transition: all var(--transition-normal);
+            cursor: pointer;
+            position: relative;
+        }
+
+        .email-card::before {
+            content: '✉';
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 2rem;
+            opacity: 0.1;
+            transition: all var(--transition-normal);
+        }
+
+        .email-card:hover::before {
+            opacity: 0.3;
+            transform: scale(1.2);
+        }
+
+        .email-card:hover {
+            border-color: var(--neon-purple);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(139, 0, 255, 0.2);
+        }
+
+        .email-address {
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 1rem;
+            color: var(--neon-purple);
+            word-break: break-all;
+            font-weight: 600;
+        }
+
+        .email-copy-btn {
+            margin-top: 1rem;
+            padding: 0.5rem 1rem;
+            background: rgba(139, 0, 255, 0.2);
+            border: 1px solid var(--neon-purple);
+            color: var(--neon-purple);
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all var(--transition-fast);
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .email-copy-btn:hover {
+            background: var(--neon-purple);
+            color: white;
+        }
+
+        /* ============================================================
+           SOCIAL MEDIA ACCOUNTS
+           ============================================================ */
+        .social-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .social-card {
+            background: var(--bg-card);
+            border: 2px solid rgba(0, 243, 255, 0.2);
+            border-radius: 20px;
+            padding: 2rem;
+            text-align: center;
+            transition: all var(--transition-normal);
+            text-decoration: none;
+            display: block;
+        }
+
+        .social-card:hover {
+            transform: translateY(-10px) rotate(2deg);
+            box-shadow: 0 15px 50px rgba(0, 243, 255, 0.3);
+        }
+
+        .social-card.github:hover { border-color: #ffffff; box-shadow: 0 15px 50px rgba(255, 255, 255, 0.2); }
+        .social-card.linkedin:hover { border-color: #0077b5; box-shadow: 0 15px 50px rgba(0, 119, 181, 0.3); }
+        .social-card.youtube:hover { border-color: #ff0000; box-shadow: 0 15px 50px rgba(255, 0, 0, 0.3); }
+        .social-card.instagram:hover { border-color: #e1306c; box-shadow: 0 15px 50px rgba(225, 48, 108, 0.3); }
+        .social-card.telegram:hover { border-color: #0088cc; box-shadow: 0 15px 50px rgba(0, 136, 204, 0.3); }
+        .social-card.twitter:hover { border-color: #1da1f2; box-shadow: 0 15px 50px rgba(29, 161, 242, 0.3); }
+
+        .social-card-icon {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            color: var(--neon-cyan);
+            transition: all var(--transition-normal);
+        }
+
+        .social-card:hover .social-card-icon {
+            transform: scale(1.2) rotate(360deg);
+        }
+
+        .social-card-name {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .social-card-handle {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        /* ============================================================
+           ORGANIZATION SECTION
+           ============================================================ */
+        .org-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .org-card {
+            background: var(--bg-card);
+            border: 1px solid rgba(0, 243, 255, 0.2);
+            border-radius: 20px;
+            padding: 2rem;
+            transition: all var(--transition-normal);
+        }
+
+        .org-card:hover {
+            border-color: var(--neon-cyan);
+            transform: translateY(-10px);
+            box-shadow: 0 15px 50px rgba(0, 243, 255, 0.2);
+        }
+
+        .org-header {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .org-logo {
+            width: 80px;
+            height: 80px;
+            border-radius: 15px;
+            border: 2px solid var(--neon-cyan);
+            object-fit: cover;
+        }
+
+        .org-info h3 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--neon-cyan);
+            margin-bottom: 0.3rem;
+        }
+
+        .org-info p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        .org-desc {
+            color: var(--text-secondary);
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+
+        .org-stats {
+            display: flex;
+            gap: 2rem;
+            margin-top: 1.5rem;
+        }
+
+        .org-stat {
+            text-align: center;
+        }
+
+        .org-stat-number {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--neon-cyan);
+        }
+
+        .org-stat-label {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+        }
+
+        /* ============================================================
+           FEATURES SECTION
+           ============================================================ */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .feature-card {
+            background: var(--bg-card);
+            border: 1px solid rgba(0, 243, 255, 0.2);
+            border-radius: 20px;
+            padding: 2.5rem;
+            transition: all var(--transition-normal);
+            text-align: center;
+        }
+
+        .feature-card:hover {
+            border-color: var(--neon-cyan);
+            transform: translateY(-10px);
+            box-shadow: 0 15px 50px rgba(0, 243, 255, 0.2);
+        }
+
+        .feature-icon-wrapper {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 1.5rem;
+            background: linear-gradient(135deg, var(--neon-cyan), var(--neon-purple));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            box-shadow: 0 0 30px rgba(0, 243, 255, 0.4);
+        }
+
+        .feature-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+        }
+
+        .feature-desc {
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        /* ============================================================
+           BURMESE LANGUAGE SUPPORT SECTION
+           ============================================================ */
+        .language-showcase {
+            background: var(--bg-card);
+            border: 2px solid rgba(255, 234, 0, 0.3);
+            border-radius: 20px;
+            padding: 3rem;
+            text-align: center;
+            margin-top: 3rem;
+        }
+
+        .language-flag {
+            font-size: 5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .language-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--neon-yellow);
+            margin-bottom: 1rem;
+        }
+
+        .language-desc {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+            line-height: 1.8;
+        }
+
+        .language-features {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+
+        .language-feature {
+            background: rgba(255, 234, 0, 0.1);
+            border: 1px solid var(--neon-yellow);
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            color: var(--neon-yellow);
+            font-weight: 600;
+        }
+
+        /* ============================================================
+           TESTIMONIALS / FEEDBACK SECTION
+           ============================================================ */
+        .testimonials-slider {
+            position: relative;
+            max-width: 900px;
+            margin: 3rem auto;
+            overflow: hidden;
+        }
+
+        .testimonial-card {
+            background: var(--bg-card);
+            border: 1px solid rgba(0, 243, 255, 0.2);
+            border-radius: 20px;
+            padding: 3rem;
+            text-align: center;
+            display: none;
+        }
+
+        .testimonial-card.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .testimonial-avatar {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            border: 3px solid var(--neon-cyan);
+            margin: 0 auto 1.5rem;
+            object-fit: cover;
+        }
+
+        .testimonial-text {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            font-style: italic;
+        }
+
+        .testimonial-author {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--neon-cyan);
+            margin-bottom: 0.3rem;
+        }
+
+        .testimonial-role {
+            color: var(--text-secondary);
+            font-size: 1rem;
+        }
+
+        .testimonial-rating {
+            margin-top: 1rem;
+            color: var(--neon-yellow);
+            font-size: 1.5rem;
+        }
+
+        .slider-controls {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .slider-btn {
+            width: 50px;
+            height: 50px;
+            border: 2px solid var(--neon-cyan);
+            background: var(--bg-card);
+            color: var(--neon-cyan);
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all var(--transition-normal);
+            font-size: 1.2rem;
+        }
+
+        .slider-btn:hover {
+            background: var(--neon-cyan);
+            color: var(--bg-dark);
+            transform: scale(1.1);
+        }
+
+        /* ============================================================
+           PRICING SECTION
+           ============================================================ */
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .pricing-card {
+            background: var(--bg-card);
+            border: 2px solid rgba(0, 243, 255, 0.2);
+            border-radius: 20px;
+            padding: 2.5rem;
+            text-align: center;
+            transition: all var(--transition-normal);
+            position: relative;
+        }
+
+        .pricing-card.featured {
+            border-color: var(--neon-cyan);
+            transform: scale(1.05);
+        }
+
+        .pricing-card:hover {
+            border-color: var(--neon-cyan);
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 60px rgba(0, 243, 255, 0.3);
+        }
+
+        .pricing-badge {
+            position: absolute;
+            top: -15px;
+            right: 20px;
+            background: linear-gradient(90deg, var(--neon-cyan), var(--neon-pink));
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .pricing-plan {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--neon-cyan);
+            margin-bottom: 1rem;
+        }
+
+        .pricing-price {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 3rem;
+            font-weight: 900;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .pricing-period {
+            color: var(--text-secondary);
+            font-size: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .pricing-features {
+            list-style: none;
+            margin-bottom: 2rem;
+            text-align: left;
+        }
+
+        .pricing-features li {
+            padding: 0.8rem 0;
+            border-bottom: 1px solid rgba(0, 243, 255, 0.1);
+            color: var(--text-secondary);
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .pricing-features li::before {
+            content: '✓';
+            color: var(--neon-green);
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+
+        .pricing-btn {
+            width: 100%;
+            padding: 1rem;
+            background: transparent;
+            border: 2px solid var(--neon-cyan);
+            color: var(--neon-cyan);
+            border-radius: 50px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all var(--transition-normal);
+            font-size: 1rem;
+            font-family: 'Rajdhani', sans-serif;
+        }
+
+        .pricing-btn:hover {
+            background: var(--neon-cyan);
+            color: var(--bg-dark);
+            box-shadow: 0 0 30px var(--neon-cyan);
+        }
+
+        .pricing-card.featured .pricing-btn {
+            background: var(--neon-cyan);
+            color: var(--bg-dark);
+        }
+
+        .pricing-card.featured .pricing-btn:hover {
+            background: var(--neon-pink);
+            border-color: var(--neon-pink);
+        }
+
+        /* ============================================================
+           FAQ SECTION
+           ============================================================ */
+        .faq-container {
+            max-width: 900px;
+            margin: 3rem auto;
+        }
+
+        .faq-item {
+            background: var(--bg-card);
+            border: 1px solid rgba(0, 243, 255, 0.2);
+            border-radius: 15px;
+            margin-bottom: 1.5rem;
+            overflow: hidden;
+            transition: all var(--transition-normal);
+        }
+
+        .faq-item.active {
+            border-color: var(--neon-cyan);
+            box-shadow: 0 0 30px rgba(0, 243, 255, 0.2);
+        }
+
+        .faq-question {
+            padding: 1.5rem 2rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            font-size: 1.1rem;
+            color: var(--text-primary);
+            transition: all var(--transition-fast);
+        }
+
+        .faq-question:hover {
+            color: var(--neon-cyan);
+        }
+
+        .faq-icon {
+            font-size: 1.5rem;
+            color: var(--neon-cyan);
+            transition: transform var(--transition-normal);
+        }
+
+        .faq-item.active .faq-icon {
+            transform: rotate(180deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height var(--transition-normal);
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 500px;
+        }
+
+        .faq-answer-content {
+            padding: 0 2rem 1.5rem 2rem;
+            color: var(--text-secondary);
+            line-height: 1.8;
+        }
+
+        /* ============================================================
+           CONTACT SECTION
+           ============================================================ */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-top: 3rem;
+            align-items: start;
+        }
+
+        .contact-info {
+            background: var(--bg-card);
+            border: 1px solid rgba(0, 243, 255, 0.2);
+            border-radius: 20px;
+            padding: 2.5rem;
+        }
+
+        .contact-info h3 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--neon-cyan);
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .contact-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--neon-cyan), var(--neon-purple));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            color: white;
+            flex-shrink: 0;
+        }
+
+        .contact-details h4 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 0.3rem;
+        }
+
+        .contact-details p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        .contact-form {
+            background: var(--bg-card);
+            border: 1px solid rgba(0, 243, 255, 0.2);
+            border-radius: 20px;
+            padding: 2.5rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        .form-input,
+        .form-textarea {
+            width: 100%;
+            padding: 1rem;
+            background: var(--bg-darker);
+            border: 1px solid rgba(0, 243, 255, 0.3);
+            border-radius: 10px;
+            color: var(--text-primary);
+            font-size: 1rem;
+            font-family: 'Rajdhani', sans-serif;
+            transition: all var(--transition-fast);
+        }
+
+        .form-input:focus,
+        .form-textarea:focus {
+            outline: none;
+            border-color: var(--neon-cyan);
+            box-shadow: 0 0 20px rgba(0, 243, 255, 0.2);
+        }
+
+        .form-textarea {
+            resize: vertical;
+            min-height: 150px;
+        }
+
+        .form-submit {
+            width: 100%;
+            padding: 1.2rem;
+            background: linear-gradient(90deg, var(--neon-cyan), var(--neon-purple));
+            border: none;
+            border-radius: 50px;
+            color: white;
+            font-weight: 700;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all var(--transition-normal);
+            font-family: 'Rajdhani', sans-serif;
+            letter-spacing: 1px;
+        }
+
+        .form-submit:hover {
+            box-shadow: 0 0 40px rgba(0, 243, 255, 0.5);
+            transform: translateY(-3px);
+        }
+
+        .form-message {
+            margin-top: 1rem;
+            padding: 1rem;
+            border-radius: 10px;
+            text-align: center;
+            font-weight: 600;
+            display: none;
+        }
+
+        .form-message.success {
+            background: rgba(57, 255, 20, 0.2);
+            border: 1px solid var(--neon-green);
+            color: var(--neon-green);
+            display: block;
+        }
+
+        .form-message.error {
+            background: rgba(255, 0, 110, 0.2);
+            border: 1px solid var(--neon-pink);
+            color: var(--neon-pink);
+            display: block;
+        }
+
+        /* ============================================================
+           NEWSLETTER SECTION
+           ============================================================ */
+        .newsletter-box {
+            background: linear-gradient(135deg, rgba(0, 243, 255, 0.1), rgba(139, 0, 255, 0.1));
+            border: 2px solid var(--neon-cyan);
+            border-radius: 20px;
+            padding: 3rem;
+            text-align: center;
+            margin: 4rem 0;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .newsletter-icon {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .newsletter-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+        }
+
+        .newsletter-desc {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+        }
+
+        .newsletter-form {
+            display: flex;
+            gap: 1rem;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .newsletter-input {
+            flex: 1;
+            padding: 1rem 1.5rem;
+            background: var(--bg-darker);
+            border: 1px solid rgba(0, 243, 255, 0.3);
+            border-radius: 50px;
+            color: var(--text-primary);
+            font-size: 1rem;
+            font-family: 'Rajdhani', sans-serif;
+        }
+
+        .newsletter-input:focus {
+            outline: none;
+            border-color: var(--neon-cyan);
+            box-shadow: 0 0 20px rgba(0, 243, 255, 0.2);
+        }
+
+        .newsletter-btn {
+            padding: 1rem 2rem;
+            background: var(--neon-cyan);
+            border: none;
+            border-radius: 50px;
+            color: var(--bg-dark);
+            font-weight: 700;
+            cursor: pointer;
+            transition: all var(--transition-normal);
+            font-family: 'Rajdhani', sans-serif;
+        }
+
+        .newsletter-btn:hover {
+            background: var(--neon-pink);
+            box-shadow: 0 0 30px var(--neon-pink);
+            transform: translateY(-3px);
+        }
+
+        /* ============================================================
+           GALLERY / LIGHTBOX
+           ============================================================ */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 3rem;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 15px;
+            cursor: pointer;
+            aspect-ratio: 1;
+        }
+
+        .gallery-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform var(--transition-slow);
+        }
+
+        .gallery-item:hover .gallery-img {
+            transform: scale(1.1);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 243, 255, 0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity var(--transition-normal);
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+
+        .gallery-icon {
+            font-size: 3rem;
+            color: white;
+        }
+
+        /* Lightbox */
+        .lightbox {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+        }
+
+        .lightbox.active {
+            display: flex;
+        }
+
+        .lightbox-content {
+            max-width: 90%;
+            max-height: 90%;
+            position: relative;
+        }
+
+        .lightbox-img {
+            max-width: 100%;
+            max-height: 90vh;
+            border-radius: 10px;
+            border: 3px solid var(--neon-cyan);
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: -40px;
+            right: 0;
+            font-size: 2rem;
+            color: white;
+            cursor: pointer;
+            background: var(--neon-pink);
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: all var(--transition-fast);
+        }
+
+        .lightbox-close:hover {
+            background: var(--neon-cyan);
+            transform: rotate(90deg);
+        }
+
+        .lightbox-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: var(--neon-cyan);
+            color: var(--bg-dark);
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all var(--transition-fast);
+            font-size: 1.5rem;
+        }
+
+        .lightbox-nav:hover {
+            background: var(--neon-pink);
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .lightbox-prev {
+            left: 20px;
+        }
+
+        .lightbox-next {
+            right: 20px;
+        }
+
+        /* ============================================================
+           GOOGLE MAP EMBED
+           ============================================================ */
+        .map-container {
+            margin-top: 3rem;
+            border-radius: 20px;
+            overflow: hidden;
+            border: 2px solid var(--neon-cyan);
+            box-shadow: 0 0 40px rgba(0, 243, 255, 0.2);
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 450px;
+            border: none;
+        }
+
+        /* ============================================================
+           BACK TO TOP BUTTON
+           ============================================================ */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--neon-cyan), var(--neon-purple));
+            color: white;
+            border: none;
+            border-radius: 50%;
+            font-size: 1.8rem;
+            cursor: pointer;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 999;
+            box-shadow: 0 0 30px rgba(0, 243, 255, 0.5);
+            transition: all var(--transition-normal);
+        }
+
+        .back-to-top.visible {
+            display: flex;
+        }
+
+        .back-to-top:hover {
+            transform: translateY(-5px) scale(1.1);
+            box-shadow: 0 0 50px rgba(0, 243, 255, 0.8);
+        }
+
+        /* ============================================================
+           STICKY CTA BUTTON
+           ============================================================ */
+        .sticky-cta {
+            position: fixed;
+            left: 30px;
+            bottom: 30px;
+            background: var(--neon-pink);
+            color: white;
+            padding: 1rem 1.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            box-shadow: 0 0 30px rgba(255, 0, 110, 0.5);
+            z-index: 999;
+            transition: all var(--transition-normal);
+            animation: pulse 2s infinite;
+            font-family: 'Rajdhani', sans-serif;
+            letter-spacing: 1px;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .sticky-cta:hover {
+            background: var(--neon-cyan);
+            box-shadow: 0 0 50px rgba(0, 243, 255, 0.8);
+            animation: none;
+        }
+
+        /* ============================================================
+           FOOTER
+           ============================================================ */
+        .footer {
+            background: var(--bg-darker);
+            border-top: 2px solid rgba(0, 243, 255, 0.2);
+            padding: 4rem 2rem 2rem;
+            margin-top: 6rem;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            max-width: 1400px;
+            margin: 0 auto 3rem;
+        }
+
+        .footer-column h4 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--neon-cyan);
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-column p {
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color var(--transition-fast);
+            display: inline-block;
+        }
+
+        .footer-links a:hover {
+            color: var(--neon-cyan);
+            transform: translateX(5px);
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-social-icon {
+            width: 45px;
+            height: 45px;
+            background: var(--bg-card);
+            border: 1px solid var(--neon-cyan);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--neon-cyan);
+            text-decoration: none;
+            transition: all var(--transition-normal);
+            font-size: 1.2rem;
+        }
+
+        .footer-social-icon:hover {
+            background: var(--neon-cyan);
+            color: var(--bg-dark);
+            transform: translateY(-5px) rotate(360deg);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(0, 243, 255, 0.1);
+            color: var(--text-secondary);
+        }
+
+        .footer-bottom p {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-heart {
+            color: var(--neon-pink);
+            animation: heartbeat 1.5s infinite;
+        }
+
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            25% { transform: scale(1.2); }
+        }
+
+        /* ============================================================
+           SCROLL ANIMATIONS
+           ============================================================ */
+        .fade-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .fade-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .fade-in {
+            opacity: 0;
+            transition: opacity 0.8s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+        }
+
+        .slide-left {
+            opacity: 0;
+            transform: translateX(-50px);
+            transition: all 0.8s ease;
+        }
+
+        .slide-left.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .slide-right {
+            opacity: 0;
+            transform: translateX(50px);
+            transition: all 0.8s ease;
+        }
+
+        .slide-right.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        /* ============================================================
+           PARALLAX SECTIONS
+           ============================================================ */
+        .parallax-section {
+            position: relative;
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            min-height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .parallax-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(10, 10, 15, 0.85);
+        }
+
+        .parallax-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            color: white;
+        }
+
+        /* ============================================================
+           LIGHT MODE
+           ============================================================ */
+        body.light-mode {
+            --bg-dark: #f5f5f5;
+            --bg-darker: #ffffff;
+            --bg-card: #ffffff;
+            --bg-card-hover: #f0f0f0;
+            --text-primary: #1a1a1a;
+            --text-secondary: #666666;
+            background: var(--bg-dark);
+            color: var(--text-primary);
+        }
+
+        body.light-mode .navbar {
+            background: rgba(255, 255, 255, 0.95);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        body.light-mode .custom-cursor {
+            border-color: var(--neon-purple);
+        }
+
+        body.light-mode .custom-cursor-dot {
+            background: var(--neon-cyan);
+        }
+
+        /* ============================================================
+           RESPONSIVE DESIGN
+           ============================================================ */
+        @media (max-width: 1024px) {
+            .hero-title {
+                font-size: 3.5rem;
+            }
+
+            .section-title {
+                font-size: 2.5rem;
+            }
+
+            .about-grid,
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .timeline::before {
+                left: 30px;
+            }
+
+            .timeline-item {
+                width: 100%;
+                text-align: left;
+                margin-left: 60px;
+            }
+
+            .timeline-item:nth-child(odd) {
+                text-align: left;
+            }
+
+            .timeline-item .timeline-dot {
+                left: -40px !important;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .section {
+                padding: var(--section-padding-mobile);
+            }
+
+            .hero-title {
+                font-size: 2.5rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.5rem;
+            }
+
+            .hero-stats {
+                gap: 2rem;
+            }
+
+            .stat-number {
+                font-size: 2rem;
+            }
+
+            .nav-menu {
+                position: fixed;
+                top: 70px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 70px);
+                background: rgba(10, 10, 15, 0.98);
+                backdrop-filter: blur(10px);
+                flex-direction: column;
+                padding: 3rem;
+                transition: left var(--transition-normal);
+                gap: 1.5rem;
+                align-items: flex-start;
+            }
+
+            .nav-menu.active {
+                left: 0;
+            }
+
+            .menu-toggle {
+                display: flex;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .hero-btns {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .btn-primary,
+            .btn-secondary {
+                width: 100%;
+            }
+
+            .newsletter-form {
+                flex-direction: column;
+            }
+
+            .newsletter-input {
+                width: 100%;
+            }
+
+            .pricing-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .pricing-card.featured {
+                transform: scale(1);
+            }
+
+            .back-to-top,
+            .sticky-cta {
+                bottom: 20px;
+                right: 20px;
+                width: 50px;
+                height: 50px;
+                font-size: 1.5rem;
+            }
+
+            .sticky-cta {
+                left: 20px;
+                padding: 0.8rem 1rem;
+                font-size: 0.9rem;
+            }
+
+            .lightbox-nav {
+                width: 40px;
+                height: 40px;
+                font-size: 1.2rem;
+            }
+
+            .lightbox-prev {
+                left: 10px;
+            }
+
+            .lightbox-next {
+                right: 10px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-title {
+                font-size: 2rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+
+            .hero-desc {
+                font-size: 1rem;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            .nav-logo {
+                font-size: 1.2rem;
+            }
+
+            .stat-number {
+                font-size: 1.8rem;
+            }
+
+            .stat-label {
+                font-size: 0.85rem;
+            }
+
+            .skill-chip {
+                padding: 0.6rem 1rem;
+                font-size: 0.9rem;
+            }
+
+            .app-card,
+            .feature-card {
+                padding: 1.5rem;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+        }
+
+        /* ============================================================
+           PRINT STYLES
+           ============================================================ */
+        @media print {
+            .navbar,
+            .back-to-top,
+            .sticky-cta,
+            .custom-cursor,
+            .custom-cursor-dot,
+            .preloader {
+                display: none !important;
+            }
+
+            body {
+                background: white;
+                color: black;
+            }
+        }
+
+        /* ============================================================
+           ACCESSIBILITY
+           ============================================================ */
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border-width: 0;
+        }
+
+        *:focus {
+            outline: 2px solid var(--neon-cyan);
+            outline-offset: 2px;
+        }
+
+        /* ============================================================
+           VIDEO BACKGROUND SECTION
+           ============================================================ */
+        .video-section {
+            position: relative;
+            min-height: 600px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .video-bg {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            transform: translate(-50%, -50%);
+            z-index: 0;
+        }
+
+        .video-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(10, 10, 15, 0.7);
+            z-index: 1;
+        }
+
+        .video-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            padding: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Custom Cursor -->
+    <div class="custom-cursor"></div>
+    <div class="custom-cursor-dot"></div>
+
+    <!-- Preloader -->
+    <div class="preloader">
+        <div class="loader"></div>
+    </div>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#home" class="nav-logo">MKA</a>
+            <ul class="nav-menu">
+                <li><a href="#home" class="nav-link">Home</a></li>
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#skills" class="nav-link">Skills</a></li>
+                <li><a href="#apps" class="nav-link">Apps</a></li>
+                <li><a href="#certificates" class="nav-link">Certificates</a></li>
+                <li><a href="#github" class="nav-link">GitHub</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+                <li><button class="theme-toggle" onclick="toggleTheme()">
+                    <i class="fas fa-moon"></i>
+                </button></li>
+            </ul>
+            <div class="menu-toggle" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section with Particle Background -->
+    <section class="hero" id="home">
+        <canvas id="particles-canvas"></canvas>
+        <div class="hero-content">
+            <div class="hero-tag fade-up">⭐ SENIOR ANDROID DEVELOPER ⭐</div>
+            <h1 class="hero-title fade-up">MOE KYAW AUNG</h1>
+            <p class="hero-subtitle fade-up">မိုးကျော်အောင်</p>
+            <p class="hero-location fade-up">📍 Tachileik, Myanmar 🇲🇲  ↔  Bangkok, Thailand 🇹🇭</p>
+            
+            <div class="hero-stats fade-up">
+                <div class="stat-item">
+                    <span class="stat-number" data-target="12">0</span>
+                    <span class="stat-label">Years Experience</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number" data-target="3000">0</span>
+                    <span class="stat-label">+ Apps Built</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number" data-target="122">0</span>
+                    <span class="stat-label">Repositories</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number" data-target="100">0</span>
+                    <span class="stat-label">% Satisfaction</span>
+                </div>
+            </div>
+
+            <p class="hero-desc fade-up">
+                Android Developer with nearly 12 years of hands-on experience building secure, scalable,
+                and user-friendly mobile applications. Strong in Kotlin and modern Jetpack development
+                (Compose, ViewModel, Room), Firebase integration, and REST API consumption.
+            </p>
+
+            <div class="hero-btns fade-up">
+                <a href="#contact" class="btn-primary">Hire Me</a>
+                <a href="#apps" class="btn-secondary">View Projects</a>
+            </div>
+
+            <div class="hero-socials fade-up">
+                <a href="https://github.com/Dev-moe-kyawaung" class="social-icon" target="_blank" rel="noopener" aria-label="GitHub">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a href="https://gravatar.com/moekyawaung13721" class="social-icon" target="_blank" rel="noopener" aria-label="Gravatar">
+                    <i class="fas fa-user-circle"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/moe-kyaw-aung-2653093a1" class="social-icon" target="_blank" rel="noopener" aria-label="LinkedIn">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+                <a href="mailto:moekyawaung@programmer.net" class="social-icon" aria-label="Email">
+                    <i class="fas fa-envelope"></i>
+                </a>
+                <a href="tel:+959889000889" class="social-icon" aria-label="Phone">
+                    <i class="fas fa-phone"></i>
+                </a>
+                <a href="https://t.me/moekyawaung" class="social-icon" target="_blank" rel="noopener" aria-label="Telegram">
+                    <i class="fab fa-telegram"></i>
+                </a>
+                <a href="https://www.instagram.com/moekyawaung" class="social-icon" target="_blank" rel="noopener" aria-label="Instagram">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="https://play.google.com/store/apps/developer?id=Moe+Kyaw+Aung" class="social-icon" target="_blank" rel="noopener" aria-label="Play Store">
+                    <i class="fab fa-google-play"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-sep"></div>
+
+    <!-- About Section with Timeline & Progress Rings -->
+    <section class="section" id="about">
+        <div class="section-label fade-up">Get To Know Me</div>
+        <h2 class="section-title fade-up">About Me</h2>
+        
+        <div class="about-grid">
+            <div class="about-image-wrapper fade-up">
+                <img src="https://res.cloudinary.com/dye5qpwii/image/upload/v1778527878/IMG_20260430_053105_uef0yr.png" alt="Moe Kyaw Aung Profile" class="about-image">
+            </div>
+            
+            <div class="about-content fade-up">
+                <h3>Senior Android Developer</h3>
+                <p>
+                    I am a passionate Android Developer with nearly 12 years of experience in building secure, scalable, and user-friendly mobile applications. I specialize in Kotlin and modern Jetpack development including Compose, ViewModel, and Room.
+                </p>
+                <p>
+                    My expertise extends to Firebase integration, REST API consumption, clean architecture principles, and practical security implementations. I focus on delivering features end-to-end—from UI to networking, local caching, testing, and release-ready builds.
+                </p>
+                <p>
+                    I'm comfortable working with MVVM architecture, Coroutines, Flow, Dagger/Hilt dependency injection, and CI/CD pipelines. I believe in writing maintainable code that scales and performs optimally.
+                </p>
+
+                <div class="info-list fade-up">
+                    <div class="info-item">
+                        <span class="info-key">Full Name</span>
+                        <span class="info-value">Moe Kyaw Aung (မိုးကျော်အောင်)</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-key">GitHub</span>
+                        <span class="info-value accent">Dev-moe-kyawaung</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-key">Experience</span>
+                        <span class="info-value accent">12+ Years</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-key">Certificates</span>
+                        <span class="info-value accent">82+ Certifications</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-key">Languages</span>
+                        <span class="info-value">Burmese 🇲🇲, English 🌐, Kotlin ☕</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-key">Status</span>
+                        <span class="info-value accent">Open to Work 🟢</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Progress Rings -->
+        <div class="progress-rings fade-up">
+            <div class="progress-ring" data-progress="95">
+                <svg>
+                    <circle class="bg-circle" cx="75" cy="75" r="70"></circle>
+                    <circle class="progress-circle" cx="75" cy="75" r="70"></circle>
+                </svg>
+                <div class="progress-label">
+                    <div class="progress-percent">95%</div>
+                    <div>Kotlin</div>
+                </div>
+            </div>
+            <div class="progress-ring" data-progress="90">
+                <svg>
+                    <circle class="bg-circle" cx="75" cy="75" r="70"></circle>
+                    <circle class="progress-circle" cx="75" cy="75" r="70" style="stroke: var(--neon-pink);"></circle>
+                </svg>
+                <div class="progress-label">
+                    <div class="progress-percent">90%</div>
+                    <div>Jetpack Compose</div>
+                </div>
+            </div>
+            <div class="progress-ring" data-progress="88">
+                <svg>
+                    <circle class="bg-circle" cx="75" cy="75" r="70"></circle>
+                    <circle class="progress-circle" cx="75" cy="75" r="70" style="stroke: var(--neon-purple);"></circle>
+                </svg>
+                <div class="progress-label">
+                    <div class="progress-percent">88%</div>
+                    <div>Firebase</div>
+                </div>
+            </div>
+            <div class="progress-ring" data-progress="85">
+                <svg>
+                    <circle class="bg-circle" cx="75" cy="75" r="70"></circle>
+                    <circle class="progress-circle" cx="75" cy="75" r="70" style="stroke: var(--neon-green);"></circle>
+                </svg>
+                <div class="progress-label">
+                    <div class="progress-percent">85%</div>
+                    <div>CI/CD</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Timeline -->
+        <div class="timeline fade-up">
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <div class="timeline-year">2013 - 2015</div>
+                    <h4 class="timeline-title">Junior Android Developer</h4>
+                    <p class="timeline-desc">Started my journey in Android development, learning Java and basic Android components</p>
+                </div>
+                <div class="timeline-dot"></div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <div class="timeline-year">2016 - 2018</div>
+                    <h4 class="timeline-title">Mid-Level Developer</h4>
+                    <p class="timeline-desc">Mastered MVVM architecture, RxJava, and started working with Kotlin</p>
+                </div>
+                <div class="timeline-dot"></div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <div class="timeline-year">2019 - 2021</div>
+                    <h4 class="timeline-title">Senior Android Engineer</h4>
+                    <p class="timeline-desc">Led development teams, implemented clean architecture, and adopted Jetpack Compose</p>
+                </div>
+                <div class="timeline-dot"></div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <div class="timeline-year">2022 - Present</div>
+                    <h4 class="timeline-title">Lead Android Developer</h4>
+                    <p class="timeline-desc">Building scalable applications with modern tech stack, mentoring developers, and contributing to open source</p>
+                </div>
+                <div class="timeline-dot"></div>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-sep"></div>
+
+    <!-- Skills Section -->
+    <section class="section" id="skills">
+        <div class="section-label fade-up">What I Know</div>
+        <h2 class="section-title fade-up">Skills & Technologies</h2>
+        <p class="section-desc fade-up">
+            A comprehensive tech stack covering mobile development, backend integration, AI/ML, and cybersecurity
+        </p>
+
+        <div class="skills-cloud fade-up">
+            <span class="skill-chip">🤖 Kotlin</span>
+            <span class="skill-chip">☕ Java</span>
+            <span class="skill-chip">📱 Jetpack Compose</span>
+            <span class="skill-chip">🏗️ MVVM</span>
+            <span class="skill-chip">🧹 Clean Architecture</span>
+            <span class="skill-chip">🔄 Coroutines</span>
+            <span class="skill-chip">💧 Flow</span>
+            <span class="skill-chip">🗄️ Room    Database</span>
+            <span class="skill-chip">🔥 Firebase</span>
+            <span class="skill-chip">🌐 Retrofit</span>
+            <span class="skill-chip">💉 Dagger/Hilt</span>
+            <span class="skill-chip">🧪 JUnit</span>
+            <span class="skill-chip">🎯 Espresso</span>
+            <span class="skill-chip">📦 Gradle</span>
+            <span class="skill-chip">🔄 Git</span>
+            <span class="skill-chip">🚀 CI/CD</span>
+            <span class="skill-chip">🐍 Python</span>
+            <span class="skill-chip">🤖 TensorFlow Lite</span>
+            <span class="skill-chip">🧠 Claude API</span>
+            <span class="skill-chip">🔐 Security</span>
+            <span class="skill-chip">🐧 Linux</span>
+            <span class="skill-chip">⚛️ React Native</span>
+            <span class="skill-chip">🦋 Flutter</span>
+            <span class="skill-chip">🌊 RxJava</span>
+            <span class="skill-chip">🎨 Material Design</span>
+            <span class="skill-chip">📊 SQLite</span>
+            <span class="skill-chip">☁️ AWS</span>
+            <span class="skill-chip">🔵 Azure</span>
+            <span class="skill-chip">📱 PWA</span>
+            <span class="skill-chip">🌐 REST API</span>
+            <span class="skill-chip">🔌 GraphQL</span>
+        </div>
+    </section>
+
+    <div class="section-sep"></div>
+
+    <!-- My Apps Collection -->
+    <section class="section" id="apps">
+        <div class="section-label fade-up">Portfolio</div>
+        <h2 class="section-title fade-up">📱 My App Collection</h2>
+        <p class="section-desc fade-up">
+            A showcase of 16+ production-ready applications built with modern Android technologies
+        </p>
+
+        <div class="apps-grid">
+            <div class="app-card fade-up">
+                <div class="app-icon">📱</div>
+                <h3 class="app-title">Social Dashboard</h3>
+                <p class="app-desc">Feature-rich social media dashboard with real-time updates, analytics, and user engagement tracking.</p>
+                <a href="https://github.com/moekyawaung-tech/social-dashboard" class="app-link" target="_blank">View Project →</a>
+            </div>
+
+            <div class="app-card fade-up">
+                <div class="app-icon">🌐</div>
+                <h3 class="app-title">PWA App</h3>
+                <p class="app-desc">Progressive Web Application with offline support, push notifications, and native-like experience.</p>
+                <a href="https://github.com/moekyawaung-tech/pwa-app" class="app-link" target="_blank">View Project →</a>
+            </div>
+
+            <div class="app-card fade-up">
+                <div class="app-icon">📊</div>
+                <h3 class="app-title">Admin Dashboard</h3>
+                <p class="app-desc">Comprehensive admin panel with data visualization, user management, and reporting features.</p>
+                <a href="https://github.com/moekyawaung-tech/admin-dashboard" class="app-link" target="_blank">View Project →</a>
+            </div>
+
+            <div class="app-card fade-up">
+                <div class="app-icon">📈</div>
+                <h3 class="app-title">Stock Market</h3>
+                <p class="app-desc">Real-time stock tracking app with charts, alerts, and portfolio management capabilities.</p>
+                <a href="https://github.com/moekyawaung-tech/stock-market" class="app-link" target="_blank">View Project →</a>
+            </div>
+
+            <div class="app-card fade-up">
+                <div class="app-icon">🎮</div>
+                <h3 class="app-title">Game Collection</h3>
+                <p class="app-desc">Multiple casual games built with Canvas API and modern web technologies.</p>
+                <a href="https://github.com/moekyawaung-tech/game-collection" class="app-link" target="_blank">View Project →</a>
+            </div>
+
+            <div class="app-card fade-up">
+                <div class="app-icon">🎵</div>
+                <h3 class="app-title">Music Player</h3>
+                <p class="app-desc">Beautiful music player with playlist management, equalizer, and lyrics support.</p>
+                <a href="https://github.com/moekyawaung-tech/music-player" class="app-link" target="_blank">View Project →</a>
+            </div>
+
+            <div class="app-card fade-up">
+                <div class="app-icon">💬</div>
+                <h3 class="app-title">Chat App</h3>
+                <p class="app-desc">Real-time messaging application with Firebase backend and end-to-end encryption.</p>
+                <a href="https://github.com/moekyawaung-tech/chat-app" class="app-link" target="_blank">View Project →</a>
+            </div>
+
+            <div class="app-card fade-up">
+                <div class="app-icon">⚽</div>
+                <h3 class="app-title">World Cup</h3>
+                <p class="app-desc">World Cup tracking app with live scores, fixtures, and team statistics.</p>
+                <a href="https://github.com/moekyawaung-tech/world-cup" class="app-link" target="_blank">View Project →</a>
+            </div>
+
+            <div class="app-card fade-up">
+                <div class="app-icon">🛒</div>
+                <h3 class="app-title">E-commerce</h3>
+                <p class="app-desc">Full-featured e-commerce platform with cart, checkout, and payment integration.</p>
+                <a href="https://github.com/moekyawaung-tech/ecommerce" class="app-link" target="_blank">View Project →</a>
+            </div>
+
+            <div class="app-card fade-up">
+                <div class="app-icon">💼</div>
+                <h3 class="app-title">Job Portal App</h3>
+                <p class="app-desc">Job search and application platform connecting employers with job seekers.</p>
+                <a href="https://github.com/moekyawaung-tech/Job-Portal-App" class="app-link" target="_blank">View Project →</a>
+            </div>
+
+            <div class="app-card fade-up">
+                <div class="app-icon">💰</div>
+                <h3 class="app-title">POS System</h3>
+                <p class="app-desc">Point of Sale system with inventory management, sales tracking, and reporting.</p>
+                <a href="https://github.com/moekyawaung-tech/POS-Full-Version" class="app-link" target="_blank">View Project →</a>
+            </div>
+
+            <div class="app-card fade-up">
+                <div class="app-icon">📝</div>
+                <h3 class="app-title">Todo App</h3>
+                <p class="app-desc">Task management application with categories, reminders, and cloud sync.</p>
+                <a href="https://github.com/moekyawaung-tech/javascript-todo" class="app-link" target="_blank">View Project →</a>
+            </div>
+
+            <div class="app-card fade-up">
+                <div class="app-icon">🎯</div>
+                <h3 class="app-title">Video Player</h3>
+                <p class="app-desc">Advanced video player with subtitle support, playback controls, and streaming.</p>
+                <a href="https://github.com/moekyawaung-tech/video-player" class="app-link" target="_blank">View Project →</a>
+            </div>
+
+            <div class="app-card fade-up">
+                <div class="app-icon">🌤️</div>
+                <h3 class="app-title">Weather App</h3>
+                <p class="app-desc">Weather forecast application with location-based predictions and interactive maps.</p>
+                <a href="https://github.com/moekyawaung-tech/Weather-app" class="app-link" target="_blank">View Project →</a>
+            </div>
+
+            <div class="app-card fade-up">
+                <div class="app-icon">🎰</div>
+                <h3 class="app-title">Casino App</h3>
+                <p class="app-desc">Entertainment casino games with beautiful UI and engaging gameplay mechanics.</p>
+                <a href="https://github.com/moekyawaung-tech/casino-app" class="app-link" target="_blank">View Project →</a>
+            </div>
+
+            <div class="app-card fade-up">
+                <div class="app-icon">🐍</div>
+                <h3 class="app-title">Snake Game</h3>
+                <p class="app-desc">Classic snake game reimagined with modern graphics and leaderboard system.</p>
+                <a href="https://github.com/moekyawaung-tech/Snake-Game-App" class="app-link" target="_blank">View Project →</a>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-sep"></div>
+
+    <!-- Certificates Section -->
+    <section class="section" id="certificates">
+        <div class="section-label fade-up">Credentials</div>
+        <h2 class="section-title fade-up">🎓 Certificates & Achievements</h2>
+        
+        <div class="cert-stats fade-up">
+            <div class="cert-stat-box">
+                <div class="cert-stat-number" data-target="82">0</div>
+                <div class="cert-stat-label">Total Certificates</div>
+            </div>
+            <div class="cert-stat-box">
+                <div class="cert-stat-number" data-target="9">0</div>
+                <div class="cert-stat-label">Categories</div>
+            </div>
+            <div class="cert-stat-box">
+                <div class="cert-stat-number" data-target="12">0</div>
+                <div class="cert-stat-label">Years Learning</div>
+            </div>
+        </div>
+
+        <p class="section-desc fade-up">
+            Comprehensive certification collection covering programming, web development, mobile, databases, AI, security, and more
+        </p>
+
+        <div class="cert-categories">
+            <div class="cert-category fade-up">
+                <span class="cert-category-icon">💻</span>
+                <h3 class="cert-category-name">Programming</h3>
+                <p class="cert-category-count">Python, Java, Kotlin, C++</p>
+            </div>
+            <div class="cert-category fade-up">
+                <span class="cert-category-icon">🌐</span>
+                <h3 class="cert-category-name">Web Development</h3>
+                <p class="cert-category-count">HTML, CSS, JavaScript, React</p>
+            </div>
+            <div class="cert-category fade-up">
+                <span class="cert-category-icon">📱</span>
+                <h3 class="cert-category-name">Mobile Development</h3>
+                <p class="cert-category-count">Android, Flutter, React Native</p>
+            </div>
+            <div class="cert-category fade-up">
+                <span class="cert-category-icon">🗄️</span>
+                <h3 class="cert-category-name">Databases</h3>
+                <p class="cert-category-count">SQL, MongoDB, Firebase</p>
+            </div>
+            <div class="cert-category fade-up">
+                <span class="cert-category-icon">🤖</span>
+                <h3 class="cert-category-name">AI & Machine Learning</h3>
+                <p class="cert-category-count">TensorFlow, PyTorch, ML</p>
+            </div>
+            <div class="cert-category fade-up">
+                <span class="cert-category-icon">🔐</span>
+                <h3 class="cert-category-name">Cybersecurity</h3>
+                <p class="cert-category-count">Ethical Hacking, Security</p>
+            </div>
+            <div class="cert-category fade-up">
+                <span class="cert-category-icon">☁️</span>
+                <h3 class="cert-category-name">Cloud Computing</h3>
+                <p class="cert-category-count">AWS, Azure, GCP</p>
+            </div>
+            <div class="cert-category fade-up">
+                <span class="cert-category-icon">🎨</span>
+                <h3 class="cert-category-name">Design</h3>
+                <p class="cert-category-count">UI/UX, Figma, Adobe</p>
+            </div>
+            <div class="cert-category fade-up">
+                <span class="cert-category-icon">🔗</span>
+                <h3 class="cert-category-name">Blockchain</h3>
+                <p class="cert-category-count">Smart Contracts, Web3</p>
+            </div>
+        </div>
+
+        <div class="hero-btns fade-up" style="margin-top: 3rem;">
+            <a href="https://dev-moe-kyawaung.github.io/Moekyawaung-Certificates/" class="btn-primary" target="_blank">View All Certificates</a>
+            <a href="https://github.com/Dev-moe-kyawaung/Moekyawaung-Certificates" class="btn-secondary" target="_blank">GitHub Repository</a>
+        </div>
+    </section>
+
+    <div class="section-sep"></div>
+
+    <!-- GitHub Accounts Collection -->
+    <section class="section" id="github">
+        <div class="section-label fade-up">Open Source</div>
+        <h2 class="section-title fade-up">🐙 GitHub Accounts Collection</h2>
+        <p class="section-desc fade-up">
+            43+ GitHub accounts showcasing diverse projects and contributions across different domains
+        </p>
+
+        <div class="github-grid">
+            <a href="https://moekyawaung-china.github.io/" class="github-card fade-up" target="_blank">
+                <div class="github-card-header">
+                    <i class="fab fa-github github-icon"></i>
+                    <span class="github-name">moekyawaung-china</span>
+                </div>
+                <p class="github-url">moekyawaung-china.github.io</p>
+            </a>
+
+            <a href="https://moekyawaung-developer.github.io/" class="github-card fade-up" target="_blank">
+                <div class="github-card-header">
+                    <i class="fab fa-github github-icon"></i>
+                    <span class="github-name">moekyawaung-developer</span>
+                </div>
+                <p class="github-url">moekyawaung-developer.github.io</p>
+            </a>
+
+            <a href="https://moekyawaungvivov30pro-design.github.io/" class="github-card fade-up" target="_blank">
+                <div class="github-card-header">
+                    <i class="fab fa-github github-icon"></i>
+                    <span class="github-name">moekyawaungvivov30pro-design</span>
+                </div>
+                <p class="github-url">moekyawaungvivov30pro-design.github.io</p>
+            </a>
+
+            <a href="https://moekyaw-aung-mm.github.io/" class="github-card fade-up" target="_blank">
+                <div class="github-card-header">
+                    <i class="fab fa-github github-icon"></i>
+                    <span class="github-name">moekyaw-aung-mm</span>
+                </div>
+                <p class="github-url">moekyaw-aung-mm.github.io</p>
+            </a>
+
+            <a href="https://moekyawaung-mk.github.io/" class="github-card fade-up" target="_blank">
+                <div class="github-card-header">
+                    <i class="fab fa-github github-icon"></i>
+                    <span class="github-name">moekyawaung-mk</span>
+                </div>
+                <p class="github-url">moekyawaung-mk.github.io</p>
+            </a>
+
+            <a href="https://moekyawaung-microsoft.github.io/" class="github-card fade-up" target="_blank">
+                <div class="github-card-header">
+                    <i class="fab fa-github github-icon"></i>
+                    <span class="github-name">moekyawaung-microsoft</span>
+                </div>
+                <p class="github-url">moekyawaung-microsoft.github.io</p>
+            </a>
+
+            <a href="https://moekyawaung-cyber.github.io/" class="github-card fade-up" target="_blank">
+                <div class="github-card-header">
+                    <i class="fab fa-github github-icon"></i>
+                    <span class="github-name">moekyawaung-cyber</span>
+                </div>
+                <p class="github-url">moekyawaung-cyber.github.io</p>
+            </a>
+
+            <a href="https://moekyawaung-bangkok.github.io/" class="github-card fade-up" target="_blank">
+                <div class="github-card-header">
+                    <i class="fab fa-github github-icon"></i>
+                    <span class="github-name">moekyawaung-bangkok</span>
+                </div>
+                <p class="github-url">moekyawaung-bangkok.github.io</p>
+            </a>
+
+            <a href="https://moekyawaung-micro.github.io/" class="github-card fade-up" target="_blank">
+                <div class="github-card-header">
+                    <i class="fab fa-github github-icon"></i>
+                    <span class="github-name">moekyawaung-micro</span>
+                </div>
+                <p class="github-url">moekyawaung-micro.github.io</p>
+            </a>
+
+            <a href="https://moekyawaungmka2032-boop.github.io/" class="github-card fade-up" target="_blank">
+                <div class="github-card-header">
+                    <i class="fab fa-github github-icon"></i>
+                    <span class="github-name">moekyawaungmka2032-boop</span>
+                </div>
+                <p class="github-url">moekyawaungmka2032-boop.github.io</p>
+            </a>
+
+            <a href="https://moekyawaung-dev-mm.github.io/" class="github-card fade-up" target="_blank">
+                <div class="github-card-header">
+                    <i class="fab fa-github github-icon"></i>
+                    <span class="github-name">moekyawaung-dev-mm</span>
+                </div>
+                <p class="github-url">moekyawaung-dev-mm.github.io</p>
+            </a>
+
+            <a href="https://moekyaw-developer.github.io/" class="github-card fade-up" target="_blank">
+                <div class="github-card-header">
+                    <i class="fab fa-github github-icon"></i>
+                    <span class="github-name">moekyaw-developer</span>
+                </div>
+                <p class="github-url">moekyaw-developer.github.io</p>
+            </a>
+
+            <a href="https://moekyawaung.github.io/" class="github-card fade-up" target="_blank">
+                <div class="github-card-header">
+                    <i class="fab fa-github github-icon"></i>
+                    <span class="github-name">moekyawaung</span>
+                </div>
+                <p class="github-url">moekyawaung.github.io</p>
+            </a>
+
+            <a href="https://Moekyawaung-mm.github.io/" class="github-card fade-up" target="_blank">
+                <div class="github-card-header">
+                    <i class="fab fa-github github-icon"></i>
+                    <span class="github-name">Moekyawaung-mm</span>
+                </div>
+                <p class="github-url">Moekyawaung-mm.github.io</p>
+            </a>
+
+            <a href="https://moekyawaung-tech.github.io/" class="github-card fade-up" target="_blank">
+                <div class="github-card-header">
+                    <i class="fab fa-github github-icon"></i>
+                    <span class="github-name">moekyawaung-tech</span>
+                </div>
+                <p class="github-url">moekyawaung-tech.github.io</p>
+            </a>
+
+            <a href="https://moekyawaung-hack.github.io/" class="github-card fade-up" target="_blank">
+                <div class="github-card-header">
+                    <i class="fab fa-github github-icon"></i>
+                    <span class="github-name">moekyawaung-hack</span>
+                </div>
+                <p class="github-url">moekyawaung-hack.github.io</p>
+            </a>
+
+            <a href="https://moekyawaung-graduate.github.io/" class="github-card fade-up" target="_blank">
+                <div class="github-card-header">
+                    <i class="fab fa-github github-icon"></i>
+                    <span class="github-name">moekyawaung-graduate</span>
+                </div>
+                <p class="github-url">moekyawaung-graduate.github.io</p>
+            </a>
+
+            <a href="https://Moekyawaung-Linux.github.io/" class="github-card fade-up" target="_blank">
+                <div class="github-card-header">
+                    <i class="fab fa-github github-icon"></i>
+                    <span class="github-name">Moekyawaung-Linux</span>
+                </div>
+                <p class="github-url">Moekyawaung-Linux.github.io</p>
+            </a>
+
+            <a href="https://Moekyawaung-coder.github.io/" class="github-card fade-up" target="_blank">
+                <div class="github-card-header">
+                    <i class="fab fa-github github-icon"></i>
+                    <span class="github-name">Moekyawaung-coder</span>
+                </div>
+                <p class="github-url">Moekyawaung-coder.github.io</p>
+            </a>
+
+            <a href="https://moekyawaung-designer.github.io/" class="github-card fade-up" target="_blank">
+                <div class="github-card-header">
+                    <i class="fab fa-github github-icon"></i>
+                    <span class="github-name">moekyawaung-designer</span>
+                </div>
+                <p class="github-url">moekyawaung-designer.github.io</p>
+            </a>
+
+            <a href="https://Moekyawaung2026.github.io/" class="github-card fade-up" target="_blank">
+                <div class="github-card-header">
+                    <i class="fab fa-github github-icon"></i>
+                    <span class="github-name">Moekyawaung2026</span>
+                </div>
+                <p class="github-url">Moekyawaung2026.github.io</p>
+            </a>
+
+            <a href="https://moekyawaungmka2034-coder.github.io/" class="github-card fade-up" target="_blank">
+                <div class="github-card-header">
+                    <i class="fab fa-github github-icon"></i>
+                    <span class="github-name">moekyawaungmka2034-coder</span>
+                </div>
+                <p class="github-url">moekyawaungmka2034-coder.github.io</p>
+            </a>
+
+            <a href="https://moekyawaung-web.github.io/" class="github-card fade-up" target="_blank">
+                <div class="github-card-header">
+                    <i class="fab fa-github github-icon"></i>
+                    <span class="github-name">moekyawaung-web</span>
+                </div>
+                <p class="github-url">moekyawaung-web.github.io</p>
+            </a>
+
+            <a href="https://Moekyawaung-dev.github.io/" class="github-card fade-up" target="_blank">
+                <div class="github-card-header">
+                    <i class="fab fa-github github-icon"></i>
+                    <span class="github-name">Moekyawaung-dev</span>
+                </div>
+                <p class="github-url">Moekyawaung-dev.github.io</p>
+            </a>
+        </div>
+    </section>
+
+    <div class="section-sep"></div>
+
+    <!-- Lovable PWA Links Collection -->
+    <section class="section" id="lovable">
+        <div class="section-label fade-up">Progressive Web Apps</div>
+        <h2 class="section-title fade-up">💖 Lovable PWA Collection</h2>
+        <p class="section-desc fade-up">
+            38+ Progressive Web Applications built with modern web technologies and cloud deployment
+        </p>
+
+        <div class="lovable-grid">
+            <a href="https://happy-cv-creator.lovable.app" class="lovable-card fade-up" target="_blank">
+                <h3 class="lovable-title">Happy CV Creator</h3>
+                <p class="lovable-url">happy-cv-creator.lovable.app</p>
+                <span class="lovable-badge">PWA</span>
+            </a>
+
+            <a href="https://moekyawaung.lovable.app" class="lovable-card fade-up" target="_blank">
+                <h3 class="lovable-title">Moekyawaung Portfolio</h3>
+                <p class="lovable-url">moekyawaung.lovable.app</p>
+                <span class="lovable-badge">PWA</span>
+            </a>
+
+            <a href="https://moekyawaungmybio.lovable.app/" class="lovable-card fade-up" target="_blank">
+                <h3 class="lovable-title">Moekyawaung Bio</h3>
+                <p class="lovable-url">moekyawaungmybio.lovable.app</p>
+                <span class="lovable-badge">PWA</span>
+            </a>
+
+            <a href="https://the-cv-palette.lovable.app" class="lovable-card fade-up" target="_blank">
+                <h3 class="lovable-title">The CV Palette</h3>
+                <p class="lovable-url">the-cv-palette.lovable.app</p>
+                <span class="lovable-badge">PWA</span>
+            </a>
+
+            <a href="https://moekyaw-url.lovable.app" class="lovable-card fade-up" target="_blank">
+                <h3 class="lovable-title">Moekyaw URL</h3>
+                <p class="lovable-url">moekyaw-url.lovable.app</p>
+                <span class="lovable-badge">PWA</span>
+            </a>
+
+            <a href="https://moekyawaung-dev.lovable.app" class="lovable-card fade-up" target="_blank">
+                <h3 class="lovable-title">Moekyawaung Dev</h3>
+                <p class="lovable-url">moekyawaung-dev.lovable.app</p>
+                <span class="lovable-badge">PWA</span>
+            </a>
+
+            <a href="https://moe-kyaw-aung.lovable.app" class="lovable-card fade-up" target="_blank">
+                <h3 class="lovable-title">Moe Kyaw Aung</h3>
+                <p class="lovable-url">moe-kyaw-aung.lovable.app</p>
+                <span class="lovable-badge">PWA</span>
+            </a>
+
+            <a href="https://moekyawaungmka.lovable.app" class="lovable-card fade-up" target="_blank">
+                <h3 class="lovable-title">Moekyawaung MKA</h3>
+                <p class="lovable-url">moekyawaungmka.lovable.app</p>
+                <span class="lovable-badge">PWA</span>
+            </a>
+
+            <a href="https://moekyaw.lovable.app" class="lovable-card fade-up" target="_blank">
+                <h3 class="lovable-title">Moekyaw</h3>
+                <p class="lovable-url">moekyaw.lovable.app</p>
+                <span class="lovable-badge">PWA</span>
+            </a>
+
+            <a href="https://m-moekyaw.lovable.app" class="lovable-card fade-up" target="_blank">
+                <h3 class="lovable-title">M-Moekyaw</h3>
+                <p class="lovable-url">m-moekyaw.lovable.app</p>
+                <span class="lovable-badge">PWA</span>
+            </a>
+
+            <a href="https://dev-moekyawaung.lovable.app" class="lovable-card fade-up" target="_blank">
+                <h3 class="lovable-title">Dev Moekyawaung</h3>
+                <p class="lovable-url">dev-moekyawaung.lovable.app</p>
+                <span class="lovable-badge">PWA</span>
+            </a>
+
+            <a href="https://dev-moekyaw.lovable.app" class="lovable-card fade-up" target="_blank">
+                <h3 class="lovable-title">Dev Moekyaw</h3>
+                <p class="lovable-url">dev-moekyaw.lovable.app</p>
+                <span class="lovable-badge">PWA</span>
+            </a>
+
+            <a href="https://cv-beacon.lovable.app/" class="lovable-card fade-up" target="_blank">
+                <h3 class="lovable-title">CV Beacon</h3>
+                          <p class="lovable-url">cv-beacon.lovable.app</p>
+                <span class="lovable-badge">PWA</span>
+            </a>
+
+            <a href="https://moekyawaungmkamka.lovable.app" class="lovable-card fade-up" target="_blank">
+                <h3 class="lovable-title">Moekyawaung MKA MKA</h3>
+                <p class="lovable-url">moekyawaungmkamka.lovable.app</p>
+                <span class="lovable-badge">PWA</span>
+            </a>
+
+            <a href="https://pixel-perfect-snap-39.lovable.app" class="lovable-card fade-up" target="_blank">
+                <h3 class="lovable-title">Pixel Perfect Snap</h3>
+                <p class="lovable-url">pixel-perfect-snap-39.lovable.app</p>
+                <span class="lovable-badge">PWA</span>
+            </a>
+
+            <a href="https://devmoekyaw.lovable.app" class="lovable-card fade-up" target="_blank">
+                <h3 class="lovable-title">DevMoekyaw</h3>
+                <p class="lovable-url">devmoekyaw.lovable.app</p>
+                <span class="lovable-badge">PWA</span>
+            </a>
+
+            <a href="https://profile-persuasion-hub.lovable.app" class="lovable-card fade-up" target="_blank">
+                <h3 class="lovable-title">Profile Persuasion Hub</h3>
+                <p class="lovable-url">profile-persuasion-hub.lovable.app</p>
+                <span class="lovable-badge">PWA</span>
+            </a>
+
+            <a href="https://friendly-haven-io.lovable.app" class="lovable-card fade-up" target="_blank">
+                <h3 class="lovable-title">Friendly Haven</h3>
+                <p class="lovable-url">friendly-haven-io.lovable.app</p>
+                <span class="lovable-badge">PWA</span>
+            </a>
+
+            <a href="https://moekyawaung-github.lovable.app" class="lovable-card fade-up" target="_blank">
+                <h3 class="lovable-title">Moekyawaung GitHub</h3>
+                <p class="lovable-url">moekyawaung-github.lovable.app</p>
+                <span class="lovable-badge">PWA</span>
+            </a>
+
+            <a href="https://joy-codify-life.lovable.app/" class="lovable-card fade-up" target="_blank">
+                <h3 class="lovable-title">Joy Codify Life</h3>
+                <p class="lovable-url">joy-codify-life.lovable.app</p>
+                <span class="lovable-badge">PWA</span>
+            </a>
+
+            <a href="https://mmoekyaw.lovable.app" class="lovable-card fade-up" target="_blank">
+                <h3 class="lovable-title">MMoekyaw</h3>
+                <p class="lovable-url">mmoekyaw.lovable.app</p>
+                <span class="lovable-badge">PWA</span>
+            </a>
+
+            <a href="https://color-code-chronicles.lovable.app" class="lovable-card fade-up" target="_blank">
+                <h3 class="lovable-title">Color Code Chronicles</h3>
+                <p class="lovable-url">color-code-chronicles.lovable.app</p>
+                <span class="lovable-badge">PWA</span>
+            </a>
+
+            <a href="https://moekyawaung-free.lovable.app" class="lovable-card fade-up" target="_blank">
+                <h3 class="lovable-title">Moekyawaung Free</h3>
+                <p class="lovable-url">moekyawaung-free.lovable.app</p>
+                <span class="lovable-badge">PWA</span>
+            </a>
+
+            <a href="https://app-skill-gallery.lovable.app" class="lovable-card fade-up" target="_blank">
+                <h3 class="lovable-title">App Skill Gallery</h3>
+                <p class="lovable-url">app-skill-gallery.lovable.app</p>
+                <span class="lovable-badge">PWA</span>
+            </a>
+        </div>
+    </section>
+
+    <div class="section-sep"></div>
+
+    <!-- Email Collection Section -->
+    <section class="section" id="email">
+        <div class="section-label fade-up">Contact Options</div>
+        <h2 class="section-title fade-up">📧 Email Collection</h2>
+        <p class="section-desc fade-up">
+            Multiple professional email addresses for different communication purposes
+        </p>
+
+        <div class="email-grid">
+            <div class="email-card fade-up" onclick="copyEmail('moekyawaung@programmer.net')">
+                <p class="email-address">moekyawaung@programmer.net</p>
+                <button class="email-copy-btn">Copy Email</button>
+            </div>
+
+            <div class="email-card fade-up" onclick="copyEmail('moekyawaung@collector.org')">
+                <p class="email-address">moekyawaung@collector.org</p>
+                <button class="email-copy-btn">Copy Email</button>
+            </div>
+
+            <div class="email-card fade-up" onclick="copyEmail('moekyawaung@technologist.com')">
+                <p class="email-address">moekyawaung@technologist.com</p>
+                <button class="email-copy-btn">Copy Email</button>
+            </div>
+
+            <div class="email-card fade-up" onclick="copyEmail('moekyawaung@techie.com')">
+                <p class="email-address">moekyawaung@techie.com</p>
+                <button class="email-copy-btn">Copy Email</button>
+            </div>
+
+            <div class="email-card fade-up" onclick="copyEmail('moekyawaung@graphic-designer.com')">
+                <p class="email-address">moekyawaung@graphic-designer.com</p>
+                <button class="email-copy-btn">Copy Email</button>
+            </div>
+
+            <div class="email-card fade-up" onclick="copyEmail('moekyawaung@cybergal.com')">
+                <p class="email-address">moekyawaung@cybergal.com</p>
+                <button class="email-copy-btn">Copy Email</button>
+            </div>
+
+            <div class="email-card fade-up" onclick="copyEmail('moekyawaung@webname.com')">
+                <p class="email-address">moekyawaung@webname.com</p>
+                <button class="email-copy-btn">Copy Email</button>
+            </div>
+
+            <div class="email-card fade-up" onclick="copyEmail('moekyawaung@hackermail.com')">
+                <p class="email-address">moekyawaung@hackermail.com</p>
+                <button class="email-copy-btn">Copy Email</button>
+            </div>
+
+            <div class="email-card fade-up" onclick="copyEmail('moekyawaung@graduate.org')">
+                <p class="email-address">moekyawaung@graduate.org</p>
+                <button class="email-copy-btn">Copy Email</button>
+            </div>
+
+            <div class="email-card fade-up" onclick="copyEmail('moekyawaung@engineer.com')">
+                <p class="email-address">moekyawaung@engineer.com</p>
+                <button class="email-copy-btn">Copy Email</button>
+            </div>
+
+            <div class="email-card fade-up" onclick="copyEmail('moekyawaung@asia.com')">
+                <p class="email-address">moekyawaung@asia.com</p>
+                <button class="email-copy-btn">Copy Email</button>
+            </div>
+
+            <div class="email-card fade-up" onclick="copyEmail('moekyawaung@contractor.net')">
+                <p class="email-address">moekyawaung@contractor.net</p>
+                <button class="email-copy-btn">Copy Email</button>
+            </div>
+
+            <div class="email-card fade-up" onclick="copyEmail('moekyawaung@linuxmail.org')">
+                <p class="email-address">moekyawaung@linuxmail.org</p>
+                <button class="email-copy-btn">Copy Email</button>
+            </div>
+
+            <div class="email-card fade-up" onclick="copyEmail('moekyawaung@usa.com')">
+                <p class="email-address">moekyawaung@usa.com</p>
+                <button class="email-copy-btn">Copy Email</button>
+            </div>
+
+            <div class="email-card fade-up" onclick="copyEmail('moekyawaung@europe.com')">
+                <p class="email-address">moekyawaung@europe.com</p>
+                <button class="email-copy-btn">Copy Email</button>
+            </div>
+
+            <div class="email-card fade-up" onclick="copyEmail('moekyawaung@mail.com')">
+                <p class="email-address">moekyawaung@mail.com</p>
+                <button class="email-copy-btn">Copy Email</button>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-sep"></div>
+
+    <!-- Social Media Accounts -->
+    <section class="section" id="social">
+        <div class="section-label fade-up">Connect With Me</div>
+        <h2 class="section-title fade-up">🌐 Social Media Accounts</h2>
+        <p class="section-desc fade-up">
+            Find me across multiple social platforms and professional networks
+        </p>
+
+        <div class="social-grid">
+            <a href="https://github.com/Dev-moe-kyawaung" class="social-card github fade-up" target="_blank">
+                <i class="fab fa-github social-card-icon"></i>
+                <h3 class="social-card-name">GitHub</h3>
+                <p class="social-card-handle">@Dev-moe-kyawaung</p>
+            </a>
+
+            <a href="https://www.linkedin.com/in/moe-kyaw-aung-2653093a1" class="social-card linkedin fade-up" target="_blank">
+                <i class="fab fa-linkedin social-card-icon"></i>
+                <h3 class="social-card-name">LinkedIn</h3>
+                <p class="social-card-handle">Moe Kyaw Aung</p>
+            </a>
+
+            <a href="https://www.youtube.com/channel/UCuTXUguZb4xjeL2nX8WJG" class="social-card youtube fade-up" target="_blank">
+                <i class="fab fa-youtube social-card-icon"></i>
+                <h3 class="social-card-name">YouTube</h3>
+                <p class="social-card-handle">@MoeKyawAung</p>
+            </a>
+
+            <a href="https://www.instagram.com/moekyawaung" class="social-card instagram fade-up" target="_blank">
+                <i class="fab fa-instagram social-card-icon"></i>
+                <h3 class="social-card-name">Instagram</h3>
+                <p class="social-card-handle">@moekyawaung</p>
+            </a>
+
+            <a href="https://t.me/moekyawaung" class="social-card telegram fade-up" target="_blank">
+                <i class="fab fa-telegram social-card-icon"></i>
+                <h3 class="social-card-name">Telegram</h3>
+                <p class="social-card-handle">@moekyawaung</p>
+            </a>
+
+            <a href="https://bsky.app/profile/moekyawaung96.bsky.social" class="social-card twitter fade-up" target="_blank">
+                <i class="fas fa-cloud social-card-icon"></i>
+                <h3 class="social-card-name">Bluesky</h3>
+                <p class="social-card-handle">@moekyawaung96</p>
+            </a>
+
+            <a href="https://www.tumblr.com/moekyawaung" class="social-card fade-up" target="_blank" style="border-color: #35465c;">
+                <i class="fab fa-tumblr social-card-icon"></i>
+                <h3 class="social-card-name">Tumblr</h3>
+                <p class="social-card-handle">@moekyawaung</p>
+            </a>
+
+            <a href="https://www.flickr.com/people/204037451@N06" class="social-card fade-up" target="_blank" style="border-color: #ff0084;">
+                <i class="fab fa-flickr social-card-icon"></i>
+                <h3 class="social-card-name">Flickr</h3>
+                <p class="social-card-handle">Moe Kyaw Aung</p>
+            </a>
+
+            <a href="https://vimeo.com/user252414232" class="social-card fade-up" target="_blank" style="border-color: #1ab7ea;">
+                <i class="fab fa-vimeo social-card-icon"></i>
+                <h3 class="social-card-name">Vimeo</h3>
+                <p class="social-card-handle">@user252414232</p>
+            </a>
+
+            <a href="https://gravatar.com/moekyawaung13721" class="social-card fade-up" target="_blank" style="border-color: #1e8cbe;">
+                <i class="fas fa-user-circle social-card-icon"></i>
+                <h3 class="social-card-name">Gravatar</h3>
+                <p class="social-card-handle">@moekyawaung13721</p>
+            </a>
+
+            <a href="https://play.google.com/store/apps/developer?id=Moe+Kyaw+Aung" class="social-card fade-up" target="_blank" style="border-color: #34a853;">
+                <i class="fab fa-google-play social-card-icon"></i>
+                <h3 class="social-card-name">Play Store</h3>
+                <p class="social-card-handle">Moe Kyaw Aung</p>
+            </a>
+
+            <a href="mailto:moekyawaung@programmer.net" class="social-card fade-up" style="border-color: var(--neon-orange);">
+                <i class="fas fa-envelope social-card-icon"></i>
+                <h3 class="social-card-name">Email</h3>
+                <p class="social-card-handle">moekyawaung@programmer.net</p>
+            </a>
+        </div>
+    </section>
+
+    <div class="section-sep"></div>
+
+    <!-- Burmese Language Support Section -->
+    <section class="section" id="burmese">
+        <div class="section-label fade-up">Language Support</div>
+        <h2 class="section-title fade-up">🇲🇲 Burmese Language Support</h2>
+        
+        <div class="language-showcase fade-up">
+            <div class="language-flag">🇲🇲</div>
+            <h3 class="language-title">မြန်မာဘာသာ အပြည့်အဝ ပံ့ပိုးမှု</h3>
+            <p class="language-desc">
+                All applications and projects support full Burmese language localization including Unicode rendering, 
+                Zawgyi font compatibility, and culturally appropriate UI/UX design for Myanmar users.
+            </p>
+            <p class="language-desc">
+                ကျွန်ုပ်၏ အက်ပ်များနှင့် ပရောဂျက်များအားလုံးသည် မြန်မာဘာသာ ပြည့်ပြည့်စုံစုံ အသုံးပြုနိုင်ပါသည်။ 
+                Unicode ဖောင့်၊ Zawgyi ဖောင့် နှစ်မျိုးလုံးကို ပံ့ပိုးပေးထားပြီး မြန်မာယဉ်ကျေးမှုနှင့် ကိုက်ညီသော UI/UX ဒီဇိုင်းများ ပါဝင်ပါသည်။
+            </p>
+
+            <div class="language-features">
+                <div class="language-feature">✓ Unicode Support</div>
+                <div class="language-feature">✓ Zawgyi Compatible</div>
+                <div class="language-feature">✓ Burmese UI/UX</div>
+                <div class="language-feature">✓ Cultural Design</div>
+                <div class="language-feature">✓ Local Payment Integration</div>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-sep"></div>
+
+    <!-- Features Section -->
+    <section class="section" id="features">
+        <div class="section-label fade-up">What I Offer</div>
+        <h2 class="section-title fade-up">✨ Features & Services</h2>
+        
+        <div class="features-grid">
+            <div class="feature-card fade-up">
+                <div class="feature-icon-wrapper">📱</div>
+                <h3 class="feature-title">Mobile Development</h3>
+                <p class="feature-desc">Native Android apps with Kotlin, Jetpack Compose, and modern architecture patterns</p>
+            </div>
+
+            <div class="feature-card fade-up">
+                <div class="feature-icon-wrapper">🎨</div>
+                <h3 class="feature-title">UI/UX Design</h3>
+                <p class="feature-desc">Beautiful, intuitive interfaces following Material Design and accessibility guidelines</p>
+            </div>
+
+            <div class="feature-card fade-up">
+                <div class="feature-icon-wrapper">🔥</div>
+                <h3 class="feature-title">Firebase Integration</h3>
+                <p class="feature-desc">Real-time databases, authentication, cloud functions, and analytics</p>
+            </div>
+
+            <div class="feature-card fade-up">
+                <div class="feature-icon-wrapper">🌐</div>
+                <h3 class="feature-title">API Development</h3>
+                <p class="feature-desc">RESTful APIs, GraphQL, and seamless backend integration</p>
+            </div>
+
+            <div class="feature-card fade-up">
+                <div class="feature-icon-wrapper">🧪</div>
+                <h3 class="feature-title">Testing & QA</h3>
+                <p class="feature-desc">Unit tests, integration tests, and UI tests for reliable applications</p>
+            </div>
+
+            <div class="feature-card fade-up">
+                <div class="feature-icon-wrapper">🚀</div>
+                <h3 class="feature-title">CI/CD Pipeline</h3>
+                <p class="feature-desc">Automated builds, testing, and deployment workflows</p>
+            </div>
+
+            <div class="feature-card fade-up">
+                <div class="feature-icon-wrapper">🔐</div>
+                <h3 class="feature-title">Security</h3>
+                <p class="feature-desc">Secure coding practices, encryption, and vulnerability assessment</p>
+            </div>
+
+            <div class="feature-card fade-up">
+                <div class="feature-icon-wrapper">⚡</div>
+                <h3 class="feature-title">Performance</h3>
+                <p class="feature-desc">Optimized code, memory management, and battery efficiency</p>
+            </div>
+
+            <div class="feature-card fade-up">
+                <div class="feature-icon-wrapper">🤖</div>
+                <h3 class="feature-title">AI/ML Integration</h3>
+                <p class="feature-desc">On-device ML models, TensorFlow Lite, and Claude API integration</p>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-sep"></div>
+
+    <!-- Testimonials Section -->
+    <section class="section" id="testimonials">
+        <div class="section-label fade-up">Client Feedback</div>
+        <h2 class="section-title fade-up">💬 What Clients Say</h2>
+        
+        <div class="testimonials-slider fade-up">
+            <div class="testimonial-card active">
+                <img src="https://i.pravatar.cc/100?img=1" alt="Client" class="testimonial-avatar">
+                <p class="testimonial-text">"Moe is an exceptional Android developer. His expertise in Kotlin and Jetpack Compose helped us deliver a high-quality app ahead of schedule."</p>
+                <h4 class="testimonial-author">John Smith</h4>
+                <p class="testimonial-role">CTO, Tech Startup</p>
+                <div class="testimonial-rating">⭐⭐⭐⭐⭐</div>
+            </div>
+
+            <div class="testimonial-card">
+                <img src="https://i.pravatar.cc/100?img=5" alt="Client" class="testimonial-avatar">
+                <p class="testimonial-text">"Working with Moe was a pleasure. His attention to detail and commitment to clean architecture resulted in a maintainable, scalable application."</p>
+                <h4 class="testimonial-author">Sarah Johnson</h4>
+                <p class="testimonial-role">Product Manager, E-commerce</p>
+                <div class="testimonial-rating">⭐⭐⭐⭐⭐</div>
+            </div>
+
+            <div class="testimonial-card">
+                <img src="https://i.pravatar.cc/100?img=8" alt="Client" class="testimonial-avatar">
+                <p class="testimonial-text">"Moe's deep understanding of mobile security and performance optimization was invaluable. He delivered beyond expectations."</p>
+                <h4 class="testimonial-author">David Chen</h4>
+                <p class="testimonial-role">Founder, Fintech Company</p>
+                <div class="testimonial-rating">⭐⭐⭐⭐⭐</div>
+            </div>
+        </div>
+
+        <div class="slider-controls">
+            <button class="slider-btn" onclick="previousTestimonial()">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            <button class="slider-btn" onclick="nextTestimonial()">
+                <i class="fas fa-chevron-right"></i>
+            </button>
+        </div>
+    </section>
+
+    <div class="section-sep"></div>
+
+    <!-- Pricing Section -->
+    <section class="section" id="pricing">
+        <div class="section-label fade-up">Investment</div>
+        <h2 class="section-title fade-up">💰 Pricing Plans</h2>
+        <p class="section-desc fade-up">
+            Flexible pricing options for projects of all sizes
+        </p>
+
+        <div class="pricing-grid">
+            <div class="pricing-card fade-up">
+                <h3 class="pricing-plan">Starter</h3>
+                <div class="pricing-price">$2,500</div>
+                <p class="pricing-period">Per Project</p>
+                <ul class="pricing-features">
+                    <li>Simple Android App</li>
+                    <li>5-7 Screens</li>
+                    <li>Basic Firebase Integration</li>
+                    <li>2 Weeks Delivery</li>
+                    <li>1 Month Support</li>
+                    <li>Source Code Included</li>
+                </ul>
+                <button class="pricing-btn">Get Started</button>
+            </div>
+
+            <div class="pricing-card featured fade-up">
+                <span class="pricing-badge">Most Popular</span>
+                <h3 class="pricing-plan">Professional</h3>
+                <div class="pricing-price">$6,000</div>
+                <p class="pricing-period">Per Project</p>
+                <ul class="pricing-features">
+                    <li>Complex Android App</li>
+                    <li>15+ Screens</li>
+                    <li>Advanced Features</li>
+                    <li>API Integration</li>
+                    <li>4-6 Weeks Delivery</li>
+                    <li>3 Months Support</li>
+                    <li>CI/CD Setup</li>
+                    <li>Play Store Deployment</li>
+                </ul>
+                <button class="pricing-btn">Get Started</button>
+            </div>
+
+            <div class="pricing-card fade-up">
+                <h3 class="pricing-plan">Enterprise</h3>
+                <div class="pricing-price">Custom</div>
+                <p class="pricing-period">Contact for Quote</p>
+                <ul class="pricing-features">
+                    <li>Large-Scale Application</li>
+                    <li>Unlimited Screens</li>
+                    <li>Custom Architecture</li>
+                    <li>Dedicated Support</li>
+                    <li>Scalable Infrastructure</li>
+                    <li>Security Audit</li>
+                    <li>Performance Optimization</li>
+                    <li>Long-term Partnership</li>
+                </ul>
+                <button class="pricing-btn">Contact Us</button>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-sep"></div>
+
+    <!-- FAQ Section -->
+    <section class="section" id="faq">
+        <div class="section-label fade-up">Common Questions</div>
+        <h2 class="section-title fade-up">❓ Frequently Asked Questions</h2>
+
+        <div class="faq-container">
+            <div class="faq-item fade-up">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <span>What technologies do you specialize in?</span>
+                    <i class="fas fa-chevron-down faq-icon"></i>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        I specialize in Kotlin for Android development, with expertise in Jetpack Compose, MVVM architecture, 
+                        Room database, Coroutines, Flow, Firebase, Retrofit, and Dagger/Hilt. I also work with Python, 
+                        TensorFlow Lite for ML integration, and various CI/CD tools.
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item fade-up">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <span>What is your development process?</span>
+                    <i class="fas fa-chevron-down faq-icon"></i>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        My process includes: 1) Requirements gathering and analysis, 2) UI/UX design and approval, 
+                        3) Development with regular updates, 4) Testing and QA, 5) Deployment to Play Store, 
+                        6) Post-launch support and maintenance. I use agile methodology with weekly sprints.
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item fade-up">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <span>How long does it take to build an app?</span>
+                    <i class="fas fa-chevron-down faq-icon"></i>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        Timeline depends on complexity. A simple app takes 2-4 weeks, a medium-complexity app takes 6-8 weeks, 
+                        and a complex enterprise app can take 3-6 months. I provide detailed timeline estimates after 
+                        understanding your requirements.
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item fade-up">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <span>Do you provide post-launch support?</span>
+                    <i class="fas fa-chevron-down faq-icon"></i>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        Yes, all packages include post-launch support ranging from 1-3 months depending on the plan. 
+                        This includes bug fixes, minor updates, and technical support. Extended support and maintenance 
+                        contracts are also available.
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item fade-up">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <span>Can you work with existing codebases?</span>
+                    <i class="fas fa-chevron-down faq-icon"></i>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        Absolutely! I have extensive experience refactoring legacy code, migrating from Java to Kotlin, 
+                        implementing new features in existing apps, and optimizing performance. I can conduct a code 
+                        audit and provide recommendations.
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item fade-up">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <span>What about app security and data privacy?</span>
+                    <i class="fas fa-chevron-down faq-icon"></i>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        Security is a top priority. I implement encryption, secure authentication, data validation, 
+                        secure network communication, and follow OWASP mobile security guidelines. I also ensure 
+                        GDPR compliance and can conduct security audits.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-sep"></div>
+
+    <!-- Gallery Section -->
+    <section class="section" id="gallery">
+        <div class="section-label fade-up">Visual Showcase</div>
+        <h2 class="section-title fade-up">🖼️ Project Gallery</h2>
+
+        <div class="gallery-grid">
+            <div class="gallery-item fade-up" onclick="openLightbox(0)">
+                <img src="https://res.cloudinary.com/dye5qpwii/image/upload/v1778747388/image-1_1_khsx9s.png" alt="Project Screenshot" class="gallery-img">
+                <div class="gallery-overlay">
+                    <i class="fas fa-search-plus gallery-icon"></i>
+                </div
+
+                    <label for="message" class="form-label">Message</label>
+                    <textarea id="message" class="form-textarea" placeholder="Tell me about your project..." required></textarea>
+                </div>
+
+                <button type="submit" class="form-submit">Send Message</button>
+                <div class="form-message" id="form-message"></div>
+            </form>
+        </div>
+
+        <!-- Google Map -->
+        <div class="map-container fade-up">
+            <iframe 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3875.5938939676676!2d100.49322731483!3d13.756331990356!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30e29937c4141e1b%3A0xb7c7c9f0b9a5c8e0!2sBangkok%2C%20Thailand!5e0!3m2!1sen!2smm!4v1234567890" 
+                allowfullscreen="" 
+                loading="lazy" 
+                referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+        </div>
+    </section>
+
+    <div class="section-sep"></div>
+
+    <!-- Newsletter Section -->
+    <section class="section">
+        <div class="newsletter-box fade-up">
+            <div class="newsletter-icon">📬</div>
+            <h3 class="newsletter-title">Subscribe to Newsletter</h3>
+            <p class="newsletter-desc">
+                Get the latest updates on Android development, tutorials, and project releases
+            </p>
+            <form class="newsletter-form" onsubmit="handleNewsletter(event)">
+                <input type="email" class="newsletter-input" placeholder="Enter your email" required>
+                <button type="submit" class="newsletter-btn">Subscribe</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-grid">
+            <div class="footer-column fade-up">
+                <h4>About</h4>
+                <p>
+                    Senior Android Developer with 12+ years of experience building secure, 
+                    scalable mobile applications using Kotlin, Jetpack Compose, and modern architecture.
+                </p>
+                <div class="footer-social">
+                    <a href="https://github.com/Dev-moe-kyawaung" class="footer-social-icon" target="_blank" aria-label="GitHub">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/in/moe-kyaw-aung-2653093a1" class="footer-social-icon" target="_blank" aria-label="LinkedIn">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                    <a href="https://t.me/moekyawaung" class="footer-social-icon" target="_blank" aria-label="Telegram">
+                        <i class="fab fa-telegram"></i>
+                    </a>
+                    <a href="https://www.youtube.com/channel/UCuTXUguZb4xjeL2nX8WJG" class="footer-social-icon" target="_blank" aria-label="YouTube">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                    <a href="https://www.instagram.com/moekyawaung" class="footer-social-icon" target="_blank" aria-label="Instagram">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="https://gravatar.com/moekyawaung13721" class="footer-social-icon" target="_blank" aria-label="Gravatar">
+                        <i class="fas fa-user-circle"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="footer-column fade-up">
+                <h4>Quick Links</h4>
+                <ul class="footer-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#apps">Projects</a></li>
+                    <li><a href="#certificates">Certificates</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column fade-up">
+                <h4>Services</h4>
+                <ul class="footer-links">
+                    <li><a href="#features">Mobile Development</a></li>
+                    <li><a href="#features">UI/UX Design</a></li>
+                    <li><a href="#features">API Integration</a></li>
+                    <li><a href="#features">Firebase Setup</a></li>
+                    <li><a href="#features">CI/CD Pipeline</a></li>
+                    <li><a href="#features">Security Audit</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column fade-up">
+                <h4>Resources</h4>
+                <ul class="footer-links">
+                    <li><a href="https://dev-moe-kyawaung.github.io/Moekyawaung-Certificates/" target="_blank">Certificates</a></li>
+                    <li><a href="https://github.com/Dev-moe-kyawaung" target="_blank">GitHub Profile</a></li>
+                    <li><a href="#github">GitHub Accounts</a></li>
+                    <li><a href="#lovable">PWA Projects</a></li>
+                    <li><a href="#pricing">Pricing</a></li>
+                    <li><a href="#faq">FAQ</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2025 Moe Kyaw Aung. All rights reserved.</p>
+            <p>Made with <span class="footer-heart">♥</span> in Myanmar 🇲🇲</p>
+            <p>Powered by Kotlin, Jetpack Compose & Modern Android</p>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top" onclick="scrollToTop()" aria-label="Back to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- Sticky CTA Button -->
+    <a href="#contact" class="sticky-cta">
+        <i class="fas fa-comment-dots"></i> Hire Me
+    </a>
+
+    <!-- JavaScript -->
+    <script>
+        // ============================================================
+        // PRELOADER
+        // ============================================================
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                document.querySelector('.preloader').classList.add('hidden');
+            }, 1000);
+        });
+
+        // ============================================================
+        // CUSTOM CURSOR
+        // ============================================================
+        const cursor = document.querySelector('.custom-cursor');
+        const cursorDot = document.querySelector('.custom-cursor-dot');
+
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.left = e.clientX + 'px';
+            cursor.style.top = e.clientY + 'px';
+            cursorDot.style.left = e.clientX + 'px';
+            cursorDot.style.top = e.clientY + 'px';
+        });
+
+        // ============================================================
+        // NAVBAR SCROLL EFFECT
+        // ============================================================
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // ============================================================
+        // MOBILE MENU TOGGLE
+        // ============================================================
+        function toggleMenu() {
+            const navMenu = document.querySelector('.nav-menu');
+            const menuToggle = document.querySelector('.menu-toggle');
+            navMenu.classList.toggle('active');
+            menuToggle.classList.toggle('active');
+        }
+
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                const navMenu = document.querySelector('.nav-menu');
+                const menuToggle = document.querySelector('.menu-toggle');
+                navMenu.classList.remove('active');
+                menuToggle.classList.remove('active');
+            });
+        });
+
+        // ============================================================
+        // SMOOTH SCROLL
+        // ============================================================
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // ============================================================
+        // ANIMATED COUNTER
+        // ============================================================
+        function animateCounter(element) {
+            const target = parseInt(element.getAttribute('data-target'));
+            const duration = 2000;
+            const increment = target / (duration / 16);
+            let current = 0;
+
+            const timer = setInterval(() => {
+                current += increment;
+                if (current >= target) {
+                    element.textContent = target + (target === 100 ? '%' : '+');
+                    clearInterval(timer);
+                } else {
+                    element.textContent = Math.floor(current) + (target === 100 ? '%' : '+');
+                }
+            }, 16);
+        }
+
+        // Trigger counter animation when in viewport
+        const counterObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateCounter(entry.target);
+                    counterObserver.unobserve(entry.target);
+                }
+            });
+        });
+
+        document.querySelectorAll('.stat-number, .cert-stat-number').forEach(counter => {
+            counterObserver.observe(counter);
+        });
+
+        // ============================================================
+        // PROGRESS RINGS ANIMATION
+        // ============================================================
+        const ringObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animated');
+                    ringObserver.unobserve(entry.target);
+                }
+            });
+        });
+
+        document.querySelectorAll('.progress-ring').forEach(ring => {
+            ringObserver.observe(ring);
+        });
+
+        // ============================================================
+        // SCROLL ANIMATIONS
+        // ============================================================
+        const scrollObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, {
+            threshold: 0.1
+        });
+
+        document.querySelectorAll('.fade-up, .fade-in, .slide-left, .slide-right').forEach(element => {
+            scrollObserver.observe(element);
+        });
+
+        // ============================================================
+        // PARTICLE BACKGROUND
+        // ============================================================
+        const canvas = document.getElementById('particles-canvas');
+        const ctx = canvas.getContext('2d');
+
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        const particles = [];
+        const particleCount = 100;
+
+        class Particle {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.vx = (Math.random() - 0.5) * 0.5;
+                this.vy = (Math.random() - 0.5) * 0.5;
+                this.radius = Math.random() * 2 + 1;
+            }
+
+            update() {
+                this.x += this.vx;
+                this.y += this.vy;
+
+                if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
+                if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
+            }
+
+            draw() {
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+                ctx.fillStyle = 'rgba(0, 243, 255, 0.5)';
+                ctx.fill();
+            }
+        }
+
+        for (let i = 0; i < particleCount; i++) {
+            particles.push(new Particle());
+        }
+
+        function animateParticles() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            particles.forEach(particle => {
+                particle.update();
+                particle.draw();
+            });
+
+            // Draw connections
+            for (let i = 0; i < particles.length; i++) {
+                for (let j = i + 1; j < particles.length; j++) {
+                    const dx = particles[i].x - particles[j].x;
+                    const dy = particles[i].y - particles[j].y;
+                    const distance = Math.sqrt(dx * dx + dy * dy);
+
+                    if (distance < 100) {
+                        ctx.beginPath();
+                        ctx.moveTo(particles[i].x, particles[i].y);
+                        ctx.lineTo(particles[j].x, particles[j].y);
+                        ctx.strokeStyle = `rgba(0, 243, 255, ${1 - distance / 100})`;
+                        ctx.lineWidth = 0.5;
+                        ctx.stroke();
+                    }
+                }
+            }
+
+            requestAnimationFrame(animateParticles);
+        }
+
+        animateParticles();
+
+        window.addEventListener('resize', () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        });
+
+        // ============================================================
+        // THEME TOGGLE
+        // ============================================================
+        function toggleTheme() {
+            document.body.classList.toggle('light-mode');
+            const themeBtn = document.querySelector('.theme-toggle i');
+            
+            if (document.body.classList.contains('light-mode')) {
+                themeBtn.classList.remove('fa-moon');
+                themeBtn.classList.add('fa-sun');
+                localStorage.setItem('theme', 'light');
+            } else {
+                themeBtn.classList.remove('fa-sun');
+                themeBtn.classList.add('fa-moon');
+                localStorage.setItem('theme', 'dark');
+            }
+        }
+
+        // Load saved theme
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'light') {
+            document.body.classList.add('light-mode');
+            document.querySelector('.theme-toggle i').classList.replace('fa-moon', 'fa-sun');
+        }
+
+        // ============================================================
+        // TESTIMONIALS SLIDER
+        // ============================================================
+        let currentTestimonial = 0;
+        const testimonials = document.querySelectorAll('.testimonial-card');
+
+        function showTestimonial(index) {
+            testimonials.forEach((card, i) => {
+                card.classList.remove('active');
+                if (i === index) {
+                    card.classList.add('active');
+                }
+            });
+        }
+
+        function nextTestimonial() {
+            currentTestimonial = (currentTestimonial + 1) % testimonials.length;
+            showTestimonial(currentTestimonial);
+        }
+
+        function previousTestimonial() {
+            currentTestimonial = (currentTestimonial - 1 + testimonials.length) % testimonials.length;
+            showTestimonial(currentTestimonial);
+        }
+
+        // Auto-rotate testimonials
+        setInterval(nextTestimonial, 5000);
+
+        // ============================================================
+        // FAQ ACCORDION
+        // ============================================================
+        function toggleFAQ(element) {
+            const faqItem = element.parentElement;
+            const isActive = faqItem.classList.contains('active');
+
+            // Close all FAQs
+            document.querySelectorAll('.faq-item').forEach(item => {
+                item.classList.remove('active');
+            });
+
+            // Open clicked FAQ if it wasn't active
+            if (!isActive) {
+                faqItem.classList.add('active');
+            }
+        }
+
+        // ============================================================
+        // CONTACT FORM
+        // ============================================================
+        function handleContactForm(event) {
+            event.preventDefault();
+            
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const subject = document.getElementById('subject').value;
+            const message = document.getElementById('message').value;
+
+            // Simulate form submission
+            const messageDiv = document.getElementById('form-message');
+            messageDiv.className = 'form-message success';
+            messageDiv.textContent = 'Thank you! Your message has been sent successfully. I\'ll get back to you soon.';
+
+            // Reset form
+            event.target.reset();
+
+            // Hide message after 5 seconds
+            setTimeout(() => {
+                messageDiv.style.display = 'none';
+            }, 5000);
+        }
+
+        // ============================================================
+        // NEWSLETTER FORM
+        // ============================================================
+        function handleNewsletter(event) {
+            event.preventDefault();
+            
+            const email = event.target.querySelector('input[type="email"]').value;
+            
+            alert('Thank you for subscribing! You\'ll receive updates at: ' + email);
+            event.target.reset();
+        }
+
+        // ============================================================
+        // EMAIL COPY FUNCTION
+        // ============================================================
+        function copyEmail(email) {
+            navigator.clipboard.writeText(email).then(() => {
+                alert('Email copied to clipboard: ' + email);
+            });
+        }
+
+        // ============================================================
+        // LIGHTBOX GALLERY
+        // ============================================================
+        const galleryImages = [
+            'https://res.cloudinary.com/dye5qpwii/image/upload/v1778747388/image-1_1_khsx9s.png',
+            'https://res.cloudinary.com/dye5qpwii/image/upload/v1778763535/MKA_25_lbx6fb.webp',
+            'https://res.cloudinary.com/dye5qpwii/image/upload/v1778763531/MKA_12_iv8kpm.webp',
+            'https://res.cloudinary.com/dye5qpwii/image/upload/v1778747384/image-1_f6zlmk.jpg',
+            'https://res.cloudinary.com/dye5qpwii/image/upload/v1778747384/image_1_buwgls.png',
+            'https://res.cloudinary.com/dye5qpwii/image/upload/v1778795822/preview_dzhqvv.webp',
+            'https://res.cloudinary.com/dye5qpwii/image/upload/v1778763531/MKA_3_zqrhhr.webp',
+            'https://res.cloudinary.com/dye5qpwii/image/upload/v1778763532/MKA_11_jbijtv.webp',
+            'https://res.cloudinary.com/dye5qpwii/image/upload/v1778795799/2024119_20_b94fen.jpg'
+        ];
+
+        let currentImageIndex = 0;
+
+        function openLightbox(index) {
+            currentImageIndex = index;
+            document.getElementById('lightbox-img').src = galleryImages[index];
+            document.getElementById('lightbox').classList.add('active');
+        }
+
+        function closeLightbox() {
+            document.getElementById('lightbox').classList.remove('active');
+        }
+
+        function changeLightboxImage(direction) {
+            currentImageIndex += direction;
+            if (currentImageIndex < 0) {
+                currentImageIndex = galleryImages.length - 1;
+            } else if (currentImageIndex >= galleryImages.length) {
+                currentImageIndex = 0;
+            }
+            document.getElementById('lightbox-img').src = galleryImages[currentImageIndex];
+        }
+
+        // Close lightbox with Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                closeLightbox();
+            } else if (e.key === 'ArrowLeft') {
+                changeLightboxImage(-1);
+            } else if (e.key === 'ArrowRight') {
+                changeLightboxImage(1);
+            }
+        });
+
+        // ============================================================
+        // BACK TO TOP BUTTON
+        // ============================================================
+        window.addEventListener('scroll', function() {
+            const backToTop = document.querySelector('.back-to-top');
+            if (window.scrollY > 300) {
+                backToTop.classList.add('visible');
+            } else {
+                backToTop.classList.remove('visible');
+            }
+        });
+
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+
+        // ============================================================
+        // PARALLAX EFFECT
+        // ============================================================
+        window.addEventListener('scroll', function() {
+            const scrolled = window.pageYOffset;
+            const parallaxElements = document.querySelectorAll('.parallax-section');
+            
+            parallaxElements.forEach(element => {
+                const speed = 0.5;
+                element.style.transform = `translateY(${scrolled * speed}px)`;
+            });
+        });
+
+        // ============================================================
+        // TYPING ANIMATION (Optional Enhancement)
+        // ============================================================
+        const roles = [
+            'Android Developer',
+            'Kotlin Expert',
+            'Jetpack Compose Specialist',
+            'Mobile Architect',
+            'Open Source Contributor'
+        ];
+        
+        let roleIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+        const typingSpeed = 100;
+        const deletingSpeed = 50;
+        const pauseTime = 2000;
+
+        function typeRole() {
+            const subtitleElement = document.querySelector('.hero-subtitle');
+            if (!subtitleElement) return;
+
+            const currentRole = roles[roleIndex];
+
+            if (isDeleting) {
+                subtitleElement.textContent = currentRole.substring(0, charIndex - 1);
+                charIndex--;
+            } else {
+                subtitleElement.textContent = currentRole.substring(0, charIndex + 1);
+                charIndex++;
+            }
+
+            if (!isDeleting && charIndex === currentRole.length) {
+                setTimeout(() => {
+                    isDeleting = true;
+                    typeRole();
+                }, pauseTime);
+                return;
+            }
+
+            if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                roleIndex = (roleIndex + 1) % roles.length;
+                setTimeout(typeRole, 500);
+                return;
+            }
+
+            setTimeout(typeRole, isDeleting ? deletingSpeed : typingSpeed);
+        }
+
+        // Start typing animation after page load
+        setTimeout(typeRole, 1000);
+
+        // ============================================================
+        // CONSOLE MESSAGE
+        // ============================================================
+        console.log('%c👋 Hello Developer!', 'color: #00f3ff; font-size: 24px; font-weight: bold;');
+        console.log('%cLooking for a talented Android developer?', 'color: #ff006e; font-size: 16px;');
+        console.log('%c📧 Contact: moekyawaung@programmer.net', 'color: #39ff14; font-size: 14px;');
+        console.log('%c🔗 GitHub: https://github.com/Dev-moe-kyawaung', 'color: #00f3ff; font-size: 14px;');
+    </script>
+</body>
+</html>
