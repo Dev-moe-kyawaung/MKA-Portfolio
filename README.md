@@ -1,4 +1,4 @@
-# 🌟 Moe Kyaw Aung - Senior Android Developer Portfolio
+i# 🌟 Moe Kyaw Aung - Senior Android Developer Portfolio
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![GitHub Pages](https://img.shields.io/badge/GitHub-Pages-blue)](https://dev-moe-kyawaung.github.io/)
@@ -10,7 +10,7 @@
 
 ## 🚀 Live Demo
 
-**[View Live Site](https://dev-moe-kyawaung.github.io/Moe-Kyaw-Aung-Portfolio-01/)**
+**[View Live Site](https://dev-moe-kyawaung.github.io/MKA-Portfolio/)**
 
 ## ✨ Features
 
