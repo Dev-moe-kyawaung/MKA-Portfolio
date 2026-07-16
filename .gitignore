@@ -1,0 +1,176 @@
+# ============================================================
+# Git Ignore File for Portfolio Project
+# ============================================================
+
+# ============================================================
+# Operating System Files
+# ============================================================
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+.Spotlight-V100
+.Trashes
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+*.lnk
+
+# Linux
+*~
+.directory
+
+# ============================================================
+# IDE and Editor Files
+# ============================================================
+
+# Visual Studio Code
+.vscode/
+*.code-workspace
+.history/
+
+# JetBrains IDEs (WebStorm, PHPStorm, etc.)
+.idea/
+*.iml
+*.iws
+*.ipr
+out/
+
+# Sublime Text
+*.sublime-project
+*.sublime-workspace
+
+# Atom
+.atom/
+
+# Vim
+*.swp
+*.swo
+*~
+.vim/
+
+# Emacs
+*~
+\#*\#
+.\#*
+
+# ============================================================
+# Development Files
+# ============================================================
+
+# Node modules (if you add npm later)
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+package-lock.json
+yarn.lock
+
+# Logs
+logs/
+*.log
+
+# Environment variables
+.env
+.env.local
+.env.development
+.env.test
+.env.production
+
+# ============================================================
+# Build and Distribution
+# ============================================================
+
+# Build directories
+dist/
+build/
+out/
+
+# Compiled files
+*.min.js
+*.min.css
+
+# Cache
+.cache/
+.parcel-cache/
+.next/
+.nuxt/
+
+# ============================================================
+# Testing
+# ============================================================
+
+# Coverage reports
+coverage/
+.nyc_output/
+*.lcov
+
+# Test results
+test-results/
+playwright-report/
+
+# ============================================================
+# Temporary Files
+# ============================================================
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+*.temp
+*.bak
+*.backup
+*.old
+
+# ============================================================
+# Project Specific
+# ============================================================
+
+# Local configuration
+config.local.js
+settings.local.json
+
+# Documentation builds
+docs/_build/
+
+# Private notes
+NOTES.md
+TODO.md
+
+# Sensitive data
+secrets/
+credentials/
+*.key
+*.pem
+*.p12
+
+# ============================================================
+# Miscellaneous
+# ============================================================
+
+# Archives
+*.zip
+*.tar
+*.tar.gz
+*.rar
+*.7z
+
+# Media files (large files)
+# Uncomment if you don't want to track large media
+# *.mp4
+# *.mov
+# *.avi
+# *.mkv
+# *.psd
+# *.ai
+
+# Database files
+*.sql
+*.sqlite
+*.db
+
