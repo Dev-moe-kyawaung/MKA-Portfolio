@@ -1,0 +1,53 @@
+{
+  "name": "Moe Kyaw Aung - Senior Android Developer",
+  "short_name": "MKA Portfolio",
+  "description": "Professional portfolio showcasing 12+ years of Android development expertise in Kotlin, Jetpack Compose, and modern mobile technologies",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0a0a0f",
+  "theme_color": "#00f3ff",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "https://res.cloudinary.com/dye5qpwii/image/upload/v1778527878/IMG_20260430_053105_uef0yr.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "https://res.cloudinary.com/dye5qpwii/image/upload/v1778527878/IMG_20260430_053105_uef0yr.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["portfolio", "business", "productivity"],
+  "lang": "en-US",
+  "dir": "ltr",
+  "scope": "/",
+  "screenshots": [
+    {
+      "src": "https://res.cloudinary.com/dye5qpwii/image/upload/v1778747388/image-1_1_khsx9s.png",
+      "sizes": "1280x720",
+      "type": "image/png",
+      "label": "Portfolio Homepage"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Contact",
+      "short_name": "Contact",
+      "description": "Get in touch with Moe Kyaw Aung",
+      "url": "/#contact",
+      "icons": [{ "src": "/icon-contact.png", "sizes": "96x96" }]
+    },
+    {
+      "name": "Projects",
+      "short_name": "Projects",
+      "description": "View project portfolio",
+      "url": "/#apps",
+      "icons": [{ "src": "/icon-projects.png", "sizes": "96x96" }]
+    }
+  ]
+}
+
